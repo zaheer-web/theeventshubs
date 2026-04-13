@@ -1,88 +1,110 @@
-import React, { useState } from "react";
-import { ChevronLeft, ChevronRight, Gift } from "lucide-react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaWhatsapp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
+import heroImg from "../../assets/wed1.jpeg";
 
 export default function Hero() {
-  const slides = [
-    {
-      title: "GrandAura Events Where Elegance Meets Excellence",
-      subtitle: "Crafting timeless experiences that leave a lasting impression",
-    },
-    {
-      title: "Luxury Wedding & Corporate Event Management",
-      subtitle: "We design unforgettable celebrations for every occasion",
-    },
-    {
-      title: "Turning Your Dream Events Into Reality",
-      subtitle: "Professional planning with creativity and perfection",
-    },
-  ];
-
-  const [index, setIndex] = useState(0);
-
-  const prevSlide = () => {
-    setIndex((index - 1 + slides.length) % slides.length);
-  };
-
-  const nextSlide = () => {
-    setIndex((index + 1) % slides.length);
-  };
+  const navigate = useNavigate();
 
   return (
-    <div className="relative h-screen w-full mb-5">
-      {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
-        className="absolute w-full h-full object-cover"
-      >
-        <source src="/src/assets/hero-video.mp4" type="video/mp4" />
-      </video>
+    <div className="relative h-[90vh] sm:h-screen w-full overflow-hidden bg-black">
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      {/* 🔥 BACKGROUND IMAGE */}
+      <motion.img
+        src={heroImg}
+        className="absolute w-full h-full object-cover opacity-40"
+        initial={{ scale: 1 }}
+        animate={{ scale: 1.1 }}
+        transition={{ duration: 10 }}
+      />
 
-      {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white z-20 px-6">
-        <motion.h1
-          key={slides[index].title}
-          initial={{ opacity: 0, y: 80, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="text-8xl font-bold max-w-5xl leading-tight"
-        >
-          {slides[index].title}
-        </motion.h1>
+      {/* 🔴 BLACK + RED OVERLAY */}
+      <div className="absolute inset-0 bg-black/70 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-red-900/40 via-black to-black z-10" />
 
-        <motion.p
-          key={slides[index].subtitle}
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mt-4 text-2xl text-gray-200"
-        >
-          {slides[index].subtitle}
-        </motion.p>
+      {/* 🎈 BALLOONS */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: 120, opacity: 0 }}
+            animate={{
+              y: [-20, -180],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 6,
+              delay: i * 1,
+              repeat: Infinity,
+            }}
+            className="absolute bottom-0 text-3xl"
+            style={{ left: `${15 + i * 15}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
       </div>
 
-      {/* Slider Buttons */}
-      {/* Slider Buttons */}
-      <div className="absolute right-10 top-1/2 flex flex-col gap-4 z-20">
-        <button
-          onClick={prevSlide}
-          className="border-4 border-white rounded-full p-4 text-white hover:bg-white/20 transition"
-        >
-          <ChevronLeft size={32} strokeWidth={3} />
-        </button>
+      {/* 🔥 CONTENT */}
+      <div className="absolute inset-0 flex items-center justify-center text-center z-30 px-6">
 
-        <button
-          onClick={nextSlide}
-          className="border-4 border-white rounded-full p-4 text-white hover:bg-white/20 transition"
+        <motion.div
+          initial={{ y: 60, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="text-white max-w-3xl"
         >
-          <ChevronRight size={32} strokeWidth={3} />
-        </button>
+
+          {/* 🔴 TITLE */}
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            Celebrate with{" "}
+            <span className="text-red-500">
+
+              <Typewriter
+                words={[
+                  "Balloon Magic 🎈",
+                  "Grand Decorations ✨",
+                  "Perfect Events ❤️",
+                ]}
+                loop
+                cursor
+              />
+
+            </span>
+          </h1>
+
+          {/* TEXT */}
+          <p className="mt-6 text-lg text-gray-300">
+            We design beautiful balloon decorations for birthdays, weddings,
+            and special celebrations.
+          </p>
+
+          {/* BUTTONS */}
+          <div className="mt-8 flex gap-4 justify-center flex-wrap">
+
+            {/* 🔴 PRIMARY BUTTON */}
+            <a
+              href="https://wa.me/917888735541"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-red-500 text-white px-8 py-3 rounded-xl font-bold 
+              hover:bg-red-400 transition shadow-lg shadow-red-500/40">
+                Book Now
+              </button>
+            </a>
+
+            {/* ⚪ SECOND BUTTON */}
+            <button
+              onClick={() => navigate("/our-gallery")}
+              className="border border-white px-8 py-3 rounded-xl text-white 
+              hover:bg-white hover:text-black transition"
+            >
+              View Gallery
+            </button>
+
+          </div>
+        </motion.div>
       </div>
     </div>
   );

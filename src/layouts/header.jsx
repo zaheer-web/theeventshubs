@@ -1,172 +1,123 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ChevronDown, Phone, Mail, Menu, X } from "lucide-react";
-import logo from "../assets/logo-grand-aura-2.png";
+import { useState, useEffect } from "react";
+import { Menu, X, Plus } from "lucide-react";
+import { NavLink, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import logo from "../assets/a1.jpeg";
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenu, setMobileMenu] = useState(false);
 
+  // Scroll Effect
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-
-    {
-      name: "Events",
-      dropdown: [
-        { name: "Conferences", path: "/events/conferences" },
-        { name: "Exhibitions", path: "/events/exhibitions" },
-        { name: "Gala Dinners", path: "/events/gala-dinners" },
-        { name: "Sales Kick Offs", path: "/events/sales-kick-offs" },
-        { name: "Experiential", path: "/events/experiential" },
-        { name: "Award Ceremonies", path: "/events/awardceremonies" },
-        { name: "Incentive Travel", path: "/events/incentivetravel" },
-        { name: "Product Launch", path: "/events/productlaunch" },
-        {
-          name: "Accommodation & Transport",
-          path: "/events/accommodation-transport",
-        },
-      ],
-    },
-
-    { name: "Clients", path: "/clients" },
-    { name: "Contact", path: "/contact" },
-    { name: "What We Offer", path: "/offer" },
-  ];
+  const navLinkClass = ({ isActive }) =>
+    isActive
+      ? "text-red-500 border-b-2 border-red-500 pb-1"
+      : "text-gray-200 hover:text-red-400 transition duration-300";
 
   return (
-    <>
-      {/* Top Contact Bar */}
-      <div className="absolute top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-md text-white py-7">
-        <div className="max-w-[1700px] mx-auto flex justify-end items-center gap-12 px-12 text-xl font-medium">
-          {/* Phone */}
-          <div className="flex items-center gap-3 relative group cursor-pointer">
-            <Phone size={22} />
+    <nav
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500
+      ${
+        scrolled
+          ? "bg-black shadow-lg shadow-black/60"
+          : "bg-gradient-to-r from-black via-black/90 to-black/80 backdrop-blur-xl border-b border-white/10"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5 md:py-6">
 
-            <span className="relative">
-              +91-95393 74410
-              {/* underline */}
-              <span className="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-[#CFAF4B] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-3">
+          <img
+            src={logo}
+            alt="logo"
+            className="h-12 md:h-14 w-auto object-contain"
+          />
+
+          {/* Brand Name */}
+          <div className="flex flex-col leading-none">
+            <span className="text-white text-lg md:text-xl font-extrabold tracking-widest uppercase">
+              The Events
             </span>
-
-            <span className="mx-4">|</span>
-          </div>
-
-          {/* Email */}
-          <div className="flex items-center gap-3 relative group cursor-pointer">
-            <Mail size={22} />
-
-            <span className="relative">
-              infograndauraofficial@gmail.com
-              {/* underline */}
-              <span className="absolute left-1/2 -bottom-1 h-[2px] w-0 bg-[#CFAF4B] transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+            <span className="text-red-500 text-base md:text-lg font-bold tracking-[4px] uppercase">
+              Hubs
             </span>
           </div>
+        </Link>
+
+        {/* Desktop Menu (SAME CONTENT) */}
+        <ul className="hidden md:flex gap-12 font-bold items-center text-lg tracking-wide">
+          <NavLink to="/" className={navLinkClass}>HOME</NavLink>
+          <NavLink to="/services" className={navLinkClass}>SERVICES</NavLink>
+          <NavLink to="/about" className={navLinkClass}>ABOUT</NavLink>
+          <NavLink to="/our-gallery" className={navLinkClass}>GALLERY</NavLink>
+          <NavLink to="/contact" className={navLinkClass}>CONTACT</NavLink>
+        </ul>
+
+        {/* Button */}
+        <a
+          href="https://wa.me/7888735541"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            className="hidden md:flex items-center gap-2 
+            bg-red-500 text-white px-7 py-3 rounded-xl font-bold text-lg
+            hover:bg-red-400 transition shadow-lg shadow-red-500/40"
+          >
+            GET STARTED <Plus size={20} />
+          </motion.button>
+        </a>
+
+        {/* Mobile Icon */}
+        <div className="md:hidden text-white">
+          {menuOpen ? (
+            <X size={30} onClick={() => setMenuOpen(false)} />
+          ) : (
+            <Menu size={30} onClick={() => setMenuOpen(true)} />
+          )}
         </div>
       </div>
 
-      {/* Navbar */}
-      <header
-        className={`fixed w-full left-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-[#0B1D3A] shadow-xl top-0"
-            : "bg-transparent top-[60px]"
-        }`}
-      >
-        <div className="w-full flex items-center justify-between px-6 py-6">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img src={logo} alt="logo" className="h-32 object-contain" />
-          </Link>
-
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex items-center gap-14 text-white text-2xl font-bold">
-            {navLinks.map((item, index) => (
-              <div key={index} className="relative group">
-                {item.dropdown ? (
-                  <>
-                    {/* Menu Title */}
-                    <div className="flex items-center gap-2 cursor-pointer hover:text-[#CFAF4B] transition">
-                      {item.name}
-
-                      <ChevronDown
-                        size={20}
-                        className="transition-transform duration-300 group-hover:rotate-180"
-                      />
-                    </div>
-
-                    {/* Dropdown */}
-                    <div
-                      className="absolute left-0 top-[60px] w-[300px] bg-[#0B1D3A] rounded-2xl shadow-2xl border border-[#CFAF4B]/30
-        opacity-0 invisible scale-95
-        group-hover:opacity-100 group-hover:visible group-hover:scale-100
-        transition-all duration-300 origin-top"
-                    >
-                      {item.dropdown.map((subItem, i) => (
-                        <Link
-                          key={i}
-                          to={subItem.path}
-                          className="block px-6 py-4 text-xl hover:bg-[#CFAF4B] hover:text-[#0B1D3A] transition rounded-xl"
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className="relative cursor-pointer hover:text-[#CFAF4B] transition"
-                  >
-                    {item.name}
-
-                    <span
-                      className="absolute left-1/2 bottom-[-10px] h-[2px] w-0 bg-[#CFAF4B]
-        transition-all duration-300 hover:w-full hover:left-0"
-                    ></span>
-                  </Link>
-                )}
-              </div>
-            ))}
-          </nav>
-          {/* Mobile Menu Button */}
-          <div
-            className="md:hidden text-white cursor-pointer"
-            onClick={() => setMobileMenu(!mobileMenu)}
-          >
-            {mobileMenu ? <X size={36} /> : <Menu size={36} />}
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden bg-[#0B1D3A] text-white px-10 pb-8 transition-all duration-500 ${
-            mobileMenu ? "max-h-[700px]" : "max-h-0 overflow-hidden"
-          }`}
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden bg-black/95 backdrop-blur-lg border-t border-white/10"
         >
-          <div className="flex flex-col gap-7 pt-6 text-xl font-semibold">
-            {navLinks.map((item, index) => (
-              <Link
-                key={index}
-                to={item.path}
-                onClick={() => setMobileMenu(false)}
-                className="border-b border-white/20 pb-3"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
-    </>
+          <ul className="flex flex-col gap-6 p-6 font-bold text-lg">
+            <NavLink to="/" onClick={() => setMenuOpen(false)} className={navLinkClass}>HOME</NavLink>
+            <NavLink to="/services" onClick={() => setMenuOpen(false)} className={navLinkClass}>SERVICES</NavLink>
+            <NavLink to="/about" onClick={() => setMenuOpen(false)} className={navLinkClass}>ABOUT</NavLink>
+            <NavLink to="/our-gallery" onClick={() => setMenuOpen(false)} className={navLinkClass}>GALLERY</NavLink>
+            <NavLink to="/contact" onClick={() => setMenuOpen(false)} className={navLinkClass}>CONTACT</NavLink>
+
+            {/* Mobile Button */}
+            <a
+              href="https://wa.me/7888735541"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+            >
+              <button className="mt-4 w-full flex justify-center items-center gap-2 
+              bg-red-500 text-white px-6 py-3 rounded-lg font-bold 
+              hover:bg-red-400 transition shadow-md shadow-red-500/40">
+                GET STARTED
+              </button>
+            </a>
+          </ul>
+        </motion.div>
+      )}
+    </nav>
   );
 }

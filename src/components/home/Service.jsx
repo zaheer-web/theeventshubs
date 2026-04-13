@@ -1,138 +1,161 @@
 import React, { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
-import s1 from "../../assets/s1.jpg";
-import s2 from "../../assets/s2.jpg";
+import s1 from "../../assets/s1.jpeg";
+import s2 from "../../assets/s2.jpeg";
 import s3 from "../../assets/s3.jpeg";
-import s4 from "../../assets/s4.jpg";
-import s5 from "../../assets/s5.jpg";
-import s6 from "../../assets/s6.jpg";
-import s7 from "../../assets/s7.jpg";
+import s4 from "../../assets/s4.jpeg";
+import s5 from "../../assets/s5.jpeg";
 
 export default function Service() {
+
   const services = [
     {
       image: s1,
-      title: "Destination Events",
-      desc: "Luxury experiences at dream destinations.",
+      title: "Balloon Decoration",
+      desc: "Creative balloon setups for all types of events and celebrations.",
+      path: "/services",
     },
     {
       image: s2,
-      title: "Event Design & Decor",
-      desc: "Transforming spaces into stunning experiences",
+      title: "Birthday Decoration",
+      desc: "Make birthdays special with unique balloon themes & surprises 🎈",
+      path: "/services",
     },
     {
       image: s3,
-      title: "Entertainment & Artist Management",
-      desc: "Entertainment that captivates every audience",
+      title: "Anniversary Decoration",
+      desc: "Romantic anniversary setups to create unforgettable memories ❤️",
+      path: "/services",
     },
     {
       image: s4,
-      title: "Destination Events",
-      desc: "Luxury experiences at dream destinations.",
+      title: "Haldi Decoration",
+      desc: "Traditional Haldi decor with modern balloon styling & colors.",
+      path: "/services",
     },
     {
       image: s5,
-      title: "Event Design & Decor",
-      desc: "Transforming spaces into stunning experiences",
-    },
-    {
-      image: s6,
-      title: "Entertainment & Artist Management",
-      desc: "Entertainment that captivates every audience",
-    },
-    {
-      image: s7,
-      title: "Entertainment & Artist Management",
-      desc: "Entertainment that captivates every audience",
+      title: "Special Event Setups",
+      desc: "Bridal entry, couple entry, proposal & surprise decorations ✨",
+      path: "/services",
     },
   ];
+
+  const loopServices = [...services, ...services];
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const nextSlide = () => {
-    if (currentIndex < services.length - 3) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+  const visibleCards = 3;
 
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
+  // AUTO SLIDE
   useEffect(() => {
+    if (isHovered) return;
+
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev < services.length - 3 ? prev + 1 : 0));
-    }, 3000); // 3 seconds
+      setCurrentIndex((prev) => prev + 1);
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isHovered]);
+
+  // RESET LOOP
+  useEffect(() => {
+    if (currentIndex >= services.length) {
+      setCurrentIndex(0);
+    }
+  }, [currentIndex, services.length]);
+
+  const nextSlide = () => setCurrentIndex((prev) => prev + 1);
+  const prevSlide = () =>
+    setCurrentIndex((prev) =>
+      prev === 0 ? services.length - 1 : prev - 1
+    );
 
   return (
-    <section className="bg-[#0B1D3A] py-20 px-10 pb-10 mb-5">
-      {/* Heading */}
-      <div className="text-center mb-14">
-        <h2 className="text-6xl font-bold text-white">Services</h2>
-        <p className="text-xl text-white mt-3">
-          Get a New Experience with Grand Aura
+    <section className="bg-black py-16 px-4">
+
+      {/* HEADING */}
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-6xl font-bold text-white">
+          Our Services
+        </h2>
+        <p className="text-red-500 mt-3 text-lg">
+          Making Every Celebration Special 🎈
         </p>
       </div>
 
-      {/* Cards */}
-      <div className="max-w-8xl mx-auto overflow-hidden">
+      {/* SLIDER */}
+      <div
+        className="max-w-7xl mx-auto overflow-hidden"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+          className="flex transition-transform duration-500"
+          style={{
+            transform: `translateX(-${
+              (currentIndex * 100) / visibleCards
+            }%)`,
+          }}
         >
-          {services.map((service, i) => (
-            <div key={i} className="w-1/3 flex-shrink-0 px-4">
-              <div className="relative rounded-xl overflow-hidden shadow-xl group">
-                {/* Image */}
+          {loopServices.map((service, i) => (
+            <Link
+              to={service.path}
+              key={i}
+              className="w-full sm:w-1/2 md:w-1/3 flex-shrink-0 px-3"
+            >
+              <div className="relative rounded-xl overflow-hidden group shadow-lg">
+
+                {/* IMAGE */}
                 <img
                   src={service.image}
-                  alt=""
-                  className="w-[800px] h-[580px] object-cover transition duration-500 group-hover:scale-110"
+                  className="w-full h-[300px] object-cover group-hover:scale-110 transition duration-500"
                 />
 
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                {/* DARK OVERLAY */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition"></div>
 
-                {/* Bottom Info Card */}
-                <div
-                  className="absolute bottom-6 left-1/2 -translate-x-1/2 
-          bg-white w-[75%] rounded-xl p-6 text-center 
-          transition duration-300 group-hover:bg-[#CFAF4B]"
-                >
-                  <h3 className="text-3xl font-semibold text-gray-800 group-hover:text-white">
+                {/* CARD */}
+                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[80%] bg-white rounded-xl p-3 text-center shadow-md group-hover:bg-red-500 transition">
+
+                  <h3 className="font-semibold text-lg text-black group-hover:text-white">
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-600 mt-2 text-lg group-hover:text-gray-200">
+                  <p className="text-sm text-gray-700 mt-1 group-hover:text-white">
                     {service.desc}
                   </p>
+
                 </div>
+
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-end gap-4 mt-3">
+      {/* BUTTONS */}
+      <div className="flex justify-center gap-4 mt-8">
+
         <button
           onClick={prevSlide}
-          className="bg-[#a18633] text-white px-7 py-3 rounded-full"
+          className="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-400 transition active:scale-90"
         >
-          <ArrowLeft size={30} />
+          <ArrowLeft size={18} />
         </button>
 
         <button
           onClick={nextSlide}
-          className="bg-[#a18633] text-white px-7 py-3 rounded-full"
+          className="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-400 transition active:scale-90"
         >
-          <ArrowRight size={30} />
+          <ArrowRight size={18} />
         </button>
+
       </div>
+
     </section>
   );
 }

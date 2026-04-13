@@ -1,131 +1,205 @@
-import React from "react";
-import logo from "../assets/logo.png";
-import videoBg from "../assets/subscribe.mp4";
+import { motion } from "framer-motion";
 import {
+  Facebook,
+  Instagram,
+  Linkedin,
   Phone,
   Mail,
   MapPin,
-  Facebook,
-  Twitter,
-  Instagram,
+  MessageCircle,
+  Plus
 } from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "../assets/a1.jpeg";
 
 export default function Footer() {
+
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="bg-[#0B1D3A] text-white relative">
-      {/* Newsletter Section */}
-      <div className="gold-shimmer px-10 py-15 mb-10 flex flex-col md:flex-row justify-between items-center gap-6 rounded-2xl shadow-xl">
-        <div>
-          <h2 className="text-5xl font-semibold ml-12">
-            Subscribe Our Newsletter
-          </h2>
-          <p className="text-gray-200 mt-2 text-lg ml-12">
-            Subscribe email and get latest updates
+    <>
+      {/* FLOATING BUTTON */}
+      <div className="fixed bottom-20 right-6 z-50 flex flex-col items-end gap-3">
+
+        {open && (
+          <>
+            <a
+              href="https://wa.me/917888735541"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 text-white p-3 rounded-full shadow-lg hover:scale-110 transition"
+            >
+              <MessageCircle size={22}/>
+            </a>
+
+            <a className="bg-gradient-to-tr from-red-600 to-pink-500 text-white p-3 rounded-full shadow-lg hover:scale-110 transition">
+              <Instagram size={22}/>
+            </a>
+
+            <a className="bg-blue-500 text-white p-3 rounded-full shadow-lg hover:scale-110 transition">
+              <Facebook size={22}/>
+            </a>
+          </>
+        )}
+
+        <button
+          onClick={()=>setOpen(!open)}
+          className="bg-gradient-to-r from-red-600 to-red-400 text-white p-4 rounded-full shadow-xl shadow-red-500/50 hover:scale-110 transition"
+        >
+          <Plus size={22}/>
+        </button>
+
+      </div>
+
+
+      {/* FOOTER */}
+      <footer className="relative bg-black text-gray-300 pt-16 pb-10 overflow-hidden">
+
+        {/* 🔥 HEAVY RED GLOW */}
+        <div className="absolute -top-32 left-0 w-[500px] h-[500px] bg-red-600/20 blur-[180px] rounded-full"></div>
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-red-500/20 blur-[180px] rounded-full"></div>
+
+        {/* 🔥 GRADIENT LINE TOP */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-12 text-center md:text-left">
+
+          {/* COMPANY */}
+          <motion.div
+            initial={{ opacity:0, y:40 }}
+            whileInView={{ opacity:1, y:0 }}
+            transition={{ duration:0.6 }}
+          >
+
+            <div className="flex items-center justify-center md:justify-start gap-3 mb-5">
+              <img src={logo} alt="logo" className="h-14"/>
+
+              <div>
+                <h2 className="text-xl font-extrabold text-white tracking-wide">
+                  The Events
+                </h2>
+                <span className="text-red-500 text-sm font-bold tracking-widest">
+                  HUBS
+                </span>
+              </div>
+            </div>
+
+            <p className="leading-relaxed max-w-sm mx-auto md:mx-0 text-gray-400">
+              We specialize in creative balloon decorations for birthdays,
+              weddings and surprise events. Turning your celebrations into unforgettable memories 🎈
+            </p>
+
+            {/* SOCIAL */}
+            <div className="flex justify-center md:justify-start gap-4 mt-6">
+              <a className="bg-white/10 p-3 rounded-lg hover:bg-red-500 hover:text-white transition shadow-md hover:shadow-red-500/40">
+                <Instagram size={18}/>
+              </a>
+
+              <a className="bg-white/10 p-3 rounded-lg hover:bg-red-500 hover:text-white transition shadow-md hover:shadow-red-500/40">
+                <Facebook size={18}/>
+              </a>
+
+              <a className="bg-white/10 p-3 rounded-lg hover:bg-red-500 hover:text-white transition shadow-md hover:shadow-red-500/40">
+                <Linkedin size={18}/>
+              </a>
+            </div>
+
+          </motion.div>
+
+
+          {/* LINKS */}
+          <motion.div
+            initial={{ opacity:0, y:40 }}
+            whileInView={{ opacity:1, y:0 }}
+            transition={{ duration:0.7 }}
+          >
+
+            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-red-500 pl-3">
+              Quick Links
+            </h3>
+
+            <ul className="space-y-3">
+              <li><Link to="/" className="hover:text-red-500">Home</Link></li>
+              <li><Link to="/about" className="hover:text-red-500">About</Link></li>
+              <li><Link to="/services" className="hover:text-red-500">Services</Link></li>
+              <li><Link to="/our-gallery" className="hover:text-red-500">Gallery</Link></li>
+              <li><Link to="/contact" className="hover:text-red-500">Contact</Link></li>
+            </ul>
+
+          </motion.div>
+
+
+          {/* SERVICES */}
+          <motion.div
+            initial={{ opacity:0, y:40 }}
+            whileInView={{ opacity:1, y:0 }}
+            transition={{ duration:0.8 }}
+          >
+
+            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-red-500 pl-3">
+              Our Services
+            </h3>
+
+            <ul className="space-y-3">
+              <li className="hover:text-red-500">Birthday Decoration</li>
+              <li className="hover:text-red-500">Anniversary Setup</li>
+              <li className="hover:text-red-500">Wedding Decoration</li>
+              <li className="hover:text-red-500">Baby Shower Decor</li>
+              <li className="hover:text-red-500">Balloon Backdrops</li>
+            </ul>
+
+          </motion.div>
+
+
+          {/* CONTACT */}
+          <motion.div
+            initial={{ opacity:0, y:40 }}
+            whileInView={{ opacity:1, y:0 }}
+            transition={{ duration:0.9 }}
+          >
+
+            <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-red-500 pl-3">
+              Contact Us
+            </h3>
+
+            <div className="space-y-4">
+
+              <a href="tel:7888735541" className="flex gap-3 hover:text-red-500">
+                <Phone size={18}/>
+                <span>78887-35541</span>
+              </a>
+
+              <a
+                href="mailto:Soodmannat902@gmail.com"
+                className="flex gap-3 hover:text-red-500"
+              >
+                <Mail size={18}/>
+                <span>Soodmannat902@gmail.com</span>
+              </a>
+
+              <div className="flex gap-3 hover:text-red-500">
+                <MapPin size={18}/>
+                <span>
+                  K-A Block 415, Rahul Vihar 2nd <br/>
+                  Near Santosh Medical, India
+                </span>
+              </div>
+
+            </div>
+
+          </motion.div>
+
+        </div>
+
+        {/* BOTTOM */}
+        <div className="border-t border-white/10 mt-16 pt-6 text-center text-gray-500">
+          <p className="hover:text-red-400 transition">
+            © {new Date().getFullYear()} The Events Hubs. All Rights Reserved.
           </p>
         </div>
 
-        <div className="flex items-center bg-white rounded-full overflow-hidden w-full md:w-[900px] ml-12">
-          <input
-            type="email"
-            placeholder="Enter Your Email"
-            className="flex-1 px-10 py-8 text-gray-700 outline-none"
-          />
-          <button className="bg-[#0B1D3A] text-white text-lg font-semibold px-8 py-5 rounded-full mr-7">
-            Subscribe Now
-          </button>
-        </div>
-      </div>
-
-      {/* Footer Main */}
-      <div className="px-10 py-20 grid md:grid-cols-4 gap-10 ml-10">
-        {/* Logo + About */}
-        <div className="flex flex-col gap-6 mb-10">
-          <img
-            src={logo}
-            alt="Grand Aura Events Logo"
-            className="h-30 W-30 mb-4 object-contain"
-          />
-
-          <p className="text-white font-semibold leading-7 ml-12">
-            Office address GrandAura Events Plot #A40, I-thum Tower Office
-            #B720-721, Tower B, sector 62 near electronic City metro station
-            noida https://maps.google.com/maps?
-            q=28.6263113%2C77.3727139&z=17&hl=en
-          </p>
-        </div>
-
-        {/* Quick Links */}
-        <div className=" ml-12">
-          <h3 className="text-3xl font-semibold mb-6">Quick Link</h3>
-
-          <ul className="space-y-3 text-xl text-white font-semibold">
-            <li>› Home</li>
-            <li>› About Us</li>
-            <li>› Services</li>
-            <li>› Contact Us</li>
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h3 className="text-3xl font-semibold mb-10">Contact Us</h3>
-
-          <div className="space-y-6 text-xl text-white font-semibold">
-            <div className="flex items-start gap-5">
-              <Phone />
-              <div>
-                <p>Phone No:</p>
-                <p>+91-8921962830</p>
-                <p>+91-9539374410</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <Mail />
-              <div>
-                <p>Email:</p>
-                <p>infograndauraofficial@gmail.com</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <MapPin />
-              <div>
-                <p>Location :</p>
-                <p>HMF5+947 Payanummal, Mandarathur, Kerala 673541</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Social */}
-        <div>
-          <h3 className="text-3xl font-semibold mb-6">Follow Us</h3>
-
-          <div className="flex gap-4">
-            <div className="bg-[#CFAF4B] p-3 rounded-xl">
-              <Facebook />
-            </div>
-
-            <div className="bg-[#CFAF4B] p-3 rounded-xl">
-              <Twitter />
-            </div>
-
-            <div className="bg-[#CFAF4B] p-3 rounded-xl">
-              <Phone />
-            </div>
-
-            <div className="bg-[#CFAF4B] p-3 rounded-xl">
-              <Instagram />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="text-center text-lg mt-8 p-6 text-gray-100">
-        © 2025 grandauraevents.com. All Rights Reserved.
-      </div>
-    </div>
+      </footer>
+    </>
   );
 }

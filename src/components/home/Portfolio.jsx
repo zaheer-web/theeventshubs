@@ -1,118 +1,160 @@
-import React, { useState } from "react";
-import { Image, ChevronLeft, ChevronRight } from "lucide-react";
-
-import p1 from "../../assets/p1.png";
-import p2 from "../../assets/p2.avif";
-import p3 from "../../assets/p3.png";
-import p4 from "../../assets/p4.jpeg";
-import p5 from "../../assets/p5.jpg";
-import p6 from "../../assets/p6.png";
+import React, { useEffect, useState } from "react";
+import { Image, Video, ChevronLeft, ChevronRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import api from "../../api/axios";
 
 export default function Portfolio() {
-  const images = [p1, p2, p3, p4, p5, p6];
+  const navigate = useNavigate();
 
+  const [galleryItems, setGalleryItems] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchGallery = async () => {
+    try {
+      setLoading(true);
+      const response = await api.get("/gallery");
+
+      if (response.data.status) {
+        setGalleryItems((response.data.data || []).slice(0, 6));
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchGallery();
+  }, []);
 
   const nextImage = () => {
-    setCurrentIndex((prev) => (prev === images.length - 2 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === galleryItems.length - 1 ? 0 : prev + 1
+    );
   };
 
   const prevImage = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 2 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? galleryItems.length - 1 : prev - 1
+    );
   };
 
   return (
-    <section className="bg-[#0B1D3A] py-20 px-16 mb-5">
-      {/* Heading */}
-      <div className="text-center mb-16">
-        <h2 className="text-6xl font-bold text-white">
-          Grand Aura Portfolio
+    <section className="bg-black py-16 px-4">
+
+      {/* 🔥 HEADING */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-5xl font-bold text-white">
+          The Events Hubs 🎈
         </h2>
 
-        <p className="text-white mt-3 text-2xl">
-          The Aura of Grand Celebrations.
+        <p className="text-red-500 mt-3 text-lg">
+          Our Beautiful Decoration Work
         </p>
       </div>
 
-      <div className="max-w-8xl mx-auto space-y-8">
-        {/* Row 1 */}
-        <div className="grid grid-cols-4 gap-8">
-          <Card img={p1} onClick={() => setCurrentIndex(0)} />
-          <Card img={p2} span="col-span-2" onClick={() => setCurrentIndex(1)} />
-          <Card img={p3} onClick={() => setCurrentIndex(2)} />
+      {/* 🔥 GALLERY */}
+      <div className="max-w-7xl mx-auto space-y-6">
+
+        {/* IMAGES (only if available) */}
+        {galleryItems.length > 0 && (
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {galleryItems.map((item, i) => (
+              <Card
+                key={i}
+                item={item}
+                onClick={() => setCurrentIndex(i)}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* 🔥 ALWAYS SHOW BUTTON */}
+        <div className="flex justify-center mt-10">
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate("/our-gallery")}
+            className="bg-red-500 text-white px-8 py-3 rounded-full font-semibold 
+            shadow-lg shadow-red-500/40 hover:bg-red-400 transition"
+          >
+            View Projects
+          </motion.button>
         </div>
 
-        {/* Row 2 */}
-        <div className="grid grid-cols-4 gap-8">
-          <Card img={p4} span="col-span-2" onClick={() => setCurrentIndex(3)} />
-          <Card img={p5} onClick={() => setCurrentIndex(4)} />
-          <Card img={p6} onClick={() => setCurrentIndex(5)} />
-        </div>
       </div>
 
-      {/* Fullscreen Gallery */}
-      {currentIndex !== null && (
+      {/* FULL SCREEN PREVIEW */}
+      {currentIndex !== null && galleryItems[currentIndex] && (
         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
-          {/* Close Button */}
+
           <button
-            className="absolute top-6 right-6 text-white text-3xl"
+            className="absolute top-6 right-6 text-white text-2xl"
             onClick={() => setCurrentIndex(null)}
           >
             ✕
           </button>
 
-          {/* Previous */}
-          <button className="absolute left-10 text-white" onClick={prevImage}>
-            <ChevronLeft size={60} />
+          <button className="absolute left-6 text-white" onClick={prevImage}>
+            <ChevronLeft size={35} />
           </button>
 
-          {/* Image */}
-          <img
-            src={images[currentIndex]}
-            alt=""
-            className="max-w-[90%] max-h-[90%] rounded-xl"
-          />
+          {galleryItems[currentIndex].type === "video" ? (
+            <video
+              src={galleryItems[currentIndex].file_url}
+              controls
+              autoPlay
+              className="max-w-[90%] max-h-[80%] rounded-xl"
+            />
+          ) : (
+            <img
+              src={galleryItems[currentIndex].file_url}
+              className="max-w-[90%] max-h-[80%] rounded-xl"
+            />
+          )}
 
-          {/* Next */}
-          <button className="absolute right-10 text-white" onClick={nextImage}>
-            <ChevronRight size={60} />
+          <button className="absolute right-6 text-white" onClick={nextImage}>
+            <ChevronRight size={35} />
           </button>
+
         </div>
       )}
     </section>
   );
 }
 
-function Card({ img, span, onClick }) {
+/* CARD */
+function Card({ item, onClick }) {
   return (
     <div
-      className={`relative overflow-hidden rounded-3xl group h-[500px] cursor-pointer ${span}`}
       onClick={onClick}
+      className="relative overflow-hidden rounded-xl cursor-pointer group h-[250px]"
     >
-      {/* Image */}
-      <img
-        src={img}
-        alt=""
-        className="w-full h-full object-cover transition duration-700  group-hover:scale-105"
-      />
+      {item.type === "video" ? (
+        <video
+          src={item.file_url}
+          className="w-full h-full object-cover group-hover:scale-110 transition"
+          muted
+        />
+      ) : (
+        <img
+          src={item.file_url}
+          className="w-full h-full object-cover group-hover:scale-110 transition"
+        />
+      )}
 
-      {/* Overlay (bottom → top) */}
-      <div
-        className="absolute inset-0 
-bg-gradient-to-t from-[#CFAF4B]/90 to-transparent
-translate-y-full group-hover:translate-y-0
-transition-transform duration-500 ease-in-out"
-      ></div>
+      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition"></div>
 
-      {/* Icon (top → center) */}
-      <div
-        className="absolute inset-0 flex items-center justify-center
-      -translate-y-20 opacity-0
-      group-hover:translate-y-0 group-hover:opacity-100
-      transition-all duration-500 ease-out"
-      >
-        <div className="w-30 h-30 bg-white rounded-full flex items-center justify-center shadow-lg">
-          <Image className="w-12 h-12 text-gray-700" />
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
+          {item.type === "video" ? (
+            <Video className="text-black" />
+          ) : (
+            <Image className="text-black" />
+          )}
         </div>
       </div>
     </div>

@@ -1,37 +1,59 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import cta from "../../assets/cta.jpg";
 
 export default function CTA() {
   return (
-    <section className="relative h-[450px] flex items-center justify-center text-center text-white mb-5">
+    <section className="relative h-[260px] sm:h-[320px] md:h-[360px] flex items-center justify-center text-center text-white overflow-hidden">
 
-      {/* Background Image */}
+      {/* BACKGROUND IMAGE */}
       <img
         src={cta}
         alt="event"
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#CFAF4B]/10 via-[#CFAF4B]/60 to-[#CFAF4B]/10 via-[#CFAF4B]/50"></div>
+      {/* 🔥 DARK + RED OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-red-900/80"></div>
 
-      {/* Content */}
-      <div className="relative z-10">
-
-        <p className="text-2xl mb-3 font-semibold">
-          Book Your Event
-        </p>
-
-        <h2 className="text-7xl md:text-8xl font-bold mb-8">
-          Your Perfect Day Awaits
-        </h2>
-
-        <button className="bg-[#0B1D3A] text-white px-10 py-4 rounded-full text-2xl font-semibold hover:bg-[#a18633] transition">
-          Contact Now
-        </button>
-
+      {/* 🎈 FLOATING BALLOONS */}
+      <div className="absolute inset-0 pointer-events-none z-10">
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-2xl animate-bounce"
+            style={{
+              left: `${20 + i * 20}%`,
+              bottom: `${10 + i * 5}%`,
+              animationDelay: `${i * 0.5}s`
+            }}
+          >
+            🎈
+          </div>
+        ))}
       </div>
 
+      {/* CONTENT */}
+      <div className="relative z-20 px-4 max-w-2xl mx-auto">
+
+        <p className="text-red-500 text-sm sm:text-base md:text-lg font-semibold mb-2">
+          Let’s Celebrate Together 🎉
+        </p>
+
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-5 leading-tight">
+          Make Your Moments Special <br /> With Beautiful Balloon Decorations
+        </h2>
+
+        <Link to="/contact">
+          <button
+            className="bg-red-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold 
+            hover:bg-red-400 hover:scale-105 active:scale-95 transition shadow-lg shadow-red-500/40"
+          >
+            Book Your Event Now
+          </button>
+        </Link>
+
+      </div>
     </section>
   );
 }
