@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Image } from "lucide-react";
 
-// 🔥 20 UNIQUE IMAGES IMPORT
+// Images
 import img1 from "../../assets/a1.jpeg";
 import img2 from "../../assets/a1.jpeg";
 import img3 from "../../assets/a1.jpeg";
@@ -28,7 +28,6 @@ export default function AllPhotos() {
   const [currentIndex, setCurrentIndex] = useState(null);
   const [showAll, setShowAll] = useState(false);
 
-  // ✅ NO REPEAT ARRAY
   const galleryItems = [
     img1, img2, img3, img4, img5,
     img6, img7, img8, img9, img10,
@@ -36,7 +35,6 @@ export default function AllPhotos() {
     img16, img17, img18, img19, img20,
   ];
 
-  // 📱 Mobile me sirf 6 images
   const visibleItems =
     window.innerWidth < 640 && !showAll
       ? galleryItems.slice(0, 6)
@@ -57,12 +55,12 @@ export default function AllPhotos() {
   return (
     <div className="min-h-screen bg-black px-4 sm:px-10 py-28">
 
-      {/* 🔥 HEADING */}
+      {/* 💎 HEADING */}
       <h1 className="text-3xl sm:text-5xl font-extrabold text-center text-white mb-12">
-        Our <span className="text-red-500">Gallery</span>
+        Our <span className="text-yellow-400">Gallery</span>
       </h1>
 
-      {/* 🔥 GRID */}
+      {/* 💎 GRID */}
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {visibleItems.map((img, index) => (
           <motion.div
@@ -71,7 +69,8 @@ export default function AllPhotos() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.05 }}
             whileHover={{ scale: 1.05 }}
-            className="overflow-hidden rounded-xl relative group cursor-pointer border border-white/10 hover:border-red-500 transition"
+            className="overflow-hidden rounded-xl relative group cursor-pointer 
+            border border-yellow-500/10 hover:border-yellow-500 transition"
             onClick={() => setCurrentIndex(index)}
           >
             {/* IMAGE */}
@@ -82,52 +81,52 @@ export default function AllPhotos() {
             />
 
             {/* OVERLAY */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg">
-                <Image className="w-5 h-5 text-black" />
+            <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+              <div className="w-12 h-12 bg-yellow-500 text-black rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/40">
+                <Image className="w-5 h-5" />
               </div>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* 🔥 VIEW MORE (MOBILE) */}
+      {/* 💎 VIEW MORE */}
       {!showAll && (
         <div className="text-center mt-10 sm:hidden">
           <button
             onClick={() => setShowAll(true)}
-            className="bg-red-500 px-6 py-2 rounded-lg text-white font-semibold hover:bg-red-400 transition"
+            className="bg-yellow-500 px-6 py-2 rounded-lg text-black font-semibold hover:bg-yellow-400 transition shadow-md shadow-yellow-500/30"
           >
             View More
           </button>
         </div>
       )}
 
-      {/* 🔥 FULLSCREEN */}
+      {/* 💎 FULLSCREEN */}
       {currentIndex !== null && (
         <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 px-4">
 
           {/* CLOSE */}
           <button
-            className="absolute top-6 right-6 text-white text-2xl"
+            className="absolute top-6 right-6 text-yellow-400 text-2xl"
             onClick={() => setCurrentIndex(null)}
           >
             ✕
           </button>
 
           {/* PREV */}
-          <button className="absolute left-4 text-white" onClick={prevItem}>
+          <button className="absolute left-4 text-yellow-400" onClick={prevItem}>
             <ChevronLeft size={40} />
           </button>
 
           {/* IMAGE */}
           <img
             src={galleryItems[currentIndex]}
-            className="max-w-[90%] max-h-[85%] rounded-xl"
+            className="max-w-[90%] max-h-[85%] rounded-xl border border-yellow-500/30"
           />
 
           {/* NEXT */}
-          <button className="absolute right-4 text-white" onClick={nextItem}>
+          <button className="absolute right-4 text-yellow-400" onClick={nextItem}>
             <ChevronRight size={40} />
           </button>
         </div>

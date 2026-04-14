@@ -17,7 +17,7 @@ export default function ContactUs() {
         icon: "success",
         title: "Message Sent 🎉",
         text: "We will contact you soon!",
-        confirmButtonColor: "#ef4444",
+        confirmButtonColor: "#D4AF37",
       });
       setLoading(false);
     }, 1500);
@@ -25,7 +25,7 @@ export default function ContactUs() {
 
   return (
     <>
-      {/* 🔥 HERO (HEIGHT INCREASED) */}
+      {/* 💎 HERO */}
       <section
         className="relative h-[400px] sm:h-[500px] flex items-center px-6 sm:px-16"
         style={{
@@ -34,17 +34,17 @@ export default function ContactUs() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/50"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-transparent"></div>
 
         <h1 className="relative text-white text-4xl md:text-6xl font-bold">
-          Contact <span className="text-red-500">Us</span>
+          Contact <span className="text-yellow-400">Us</span>
         </h1>
       </section>
 
       <Divider />
 
-      {/* 🔥 CONTACT SECTION */}
+      {/* 💎 CONTACT SECTION */}
       <section className="bg-black py-20 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
 
@@ -52,7 +52,7 @@ export default function ContactUs() {
           <motion.div
             initial={{ x: -80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            className="bg-[#111] p-8 rounded-2xl border border-white/10"
+            className="bg-[#111] p-8 rounded-2xl border border-yellow-500/10"
           >
             <h2 className="text-3xl font-bold text-white mb-6">
               Get in Touch
@@ -60,23 +60,20 @@ export default function ContactUs() {
 
             <div className="space-y-6">
 
-              {/* PHONE */}
               <div className="flex gap-4">
-                <Phone className="text-red-500" />
+                <Phone className="text-yellow-400" />
                 <p className="text-gray-300">78887-35541</p>
               </div>
 
-              {/* EMAIL */}
               <div className="flex gap-4">
-                <Mail className="text-red-500" />
+                <Mail className="text-yellow-400" />
                 <p className="text-gray-300 break-all">
                   Soodmannat902gmail.com
                 </p>
               </div>
 
-              {/* 🔥 UPDATED ADDRESS */}
               <div className="flex gap-4">
-                <MapPin className="text-red-500" />
+                <MapPin className="text-yellow-400" />
                 <p className="text-gray-300">
                   K-A Block 415, Rahul Vihar 2nd <br />
                   Near Santosh Medical, Ghaziabad
@@ -91,7 +88,7 @@ export default function ContactUs() {
             onSubmit={handleSubmit}
             initial={{ x: 80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
-            className="bg-[#111] p-8 rounded-2xl border border-white/10"
+            className="bg-[#111] p-8 rounded-2xl border border-yellow-500/10"
           >
             <h2 className="text-3xl font-bold text-white mb-6">
               Send Message
@@ -99,25 +96,25 @@ export default function ContactUs() {
 
             <input
               placeholder="Your Name"
-              className="bg-black border border-white/10 rounded-lg p-3 w-full text-white mb-4"
+              className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
             <input
               placeholder="Email"
-              className="bg-black border border-white/10 rounded-lg p-3 w-full text-white mb-4"
+              className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
             <input
               placeholder="Phone"
-              className="bg-black border border-white/10 rounded-lg p-3 w-full text-white mb-4"
+              className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
             <textarea
               placeholder="Message"
-              className="bg-black border border-white/10 rounded-lg p-3 w-full text-white mb-4"
+              className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
-            <button className="w-full bg-red-500 py-3 rounded-lg font-bold hover:bg-red-400 transition">
+            <button className="w-full bg-yellow-500 py-3 rounded-lg font-bold text-black hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30">
               {loading ? "Sending..." : "Send Message"}
             </button>
           </motion.form>
@@ -127,9 +124,9 @@ export default function ContactUs() {
 
       <Divider />
 
-      {/* 🔥 MAP */}
+      {/* 💎 MAP */}
       <section className="bg-black py-10 px-6">
-        <div className="max-w-7xl mx-auto rounded-2xl overflow-hidden border border-white/10">
+        <div className="max-w-7xl mx-auto rounded-2xl overflow-hidden border border-yellow-500/10">
           <iframe
             src="https://www.google.com/maps?q=Rahul%20Vihar%20Ghaziabad&z=15&output=embed"
             className="w-full h-[400px]"

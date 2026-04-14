@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import s1 from "../../assets/s1.jpeg";
 import s2 from "../../assets/s2.jpeg";
@@ -26,7 +27,7 @@ export default function Service() {
     {
       image: s3,
       title: "Anniversary Decoration",
-      desc: "Romantic anniversary setups to create unforgettable memories ❤️",
+      desc: "Romantic anniversary setups to create unforgettable memories 💛",
       path: "/services",
     },
     {
@@ -50,18 +51,14 @@ export default function Service() {
 
   const visibleCards = 3;
 
-  // AUTO SLIDE
   useEffect(() => {
     if (isHovered) return;
-
     const interval = setInterval(() => {
       setCurrentIndex((prev) => prev + 1);
     }, 3000);
-
     return () => clearInterval(interval);
   }, [isHovered]);
 
-  // RESET LOOP
   useEffect(() => {
     if (currentIndex >= services.length) {
       setCurrentIndex(0);
@@ -75,21 +72,98 @@ export default function Service() {
     );
 
   return (
-    <section className="bg-black py-16 px-4">
+    <section className="relative bg-black py-16 px-4 overflow-hidden">
 
-      {/* HEADING */}
-      <div className="text-center mb-12">
+      {/* 🎉 CONFETTI (TOP + MID + BOTTOM BOTH SIDE) */}
+      {["top-0", "top-1/2 -translate-y-1/2", "bottom-0"].map((pos, idx) => (
+        <React.Fragment key={idx}>
+
+          {/* LEFT */}
+          <div className={`absolute left-0 ${pos} z-10 pointer-events-none`}>
+            {[...Array(10)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  x: idx === 1 ? 200 : Math.random() * 100,
+                  y: idx === 2 ? -200 : 200,
+                  opacity: [1, 0],
+                }}
+                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
+                className={`absolute w-2 h-2 ${
+                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* RIGHT */}
+          <div className={`absolute right-0 ${pos} z-10 pointer-events-none`}>
+            {[...Array(10)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  x: idx === 1 ? -200 : -Math.random() * 100,
+                  y: idx === 2 ? -200 : 200,
+                  opacity: [1, 0],
+                }}
+                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
+                className={`absolute w-2 h-2 ${
+                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
+                }`}
+              />
+            ))}
+          </div>
+
+        </React.Fragment>
+      ))}
+
+      {/* 🎈 BALLOONS */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ y: [-10, -120], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 6, delay: i * 1, repeat: Infinity }}
+            className="absolute bottom-0 text-3xl"
+            style={{ left: `${20 + i * 20}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 🌸 FLOWERS */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [-20, -200],
+              opacity: [0, 1, 0],
+              x: [0, i % 2 === 0 ? 30 : -30],
+            }}
+            transition={{ duration: 7, delay: i * 0.7, repeat: Infinity }}
+            className="absolute bottom-0 text-2xl"
+            style={{ left: `${10 + i * 18}%` }}
+          >
+            🌸
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 💎 HEADING */}
+      <div className="text-center mb-12 relative z-20">
         <h2 className="text-4xl md:text-6xl font-bold text-white">
           Our Services
         </h2>
-        <p className="text-red-500 mt-3 text-lg">
+        <p className="text-yellow-400 mt-3 text-lg">
           Making Every Celebration Special 🎈
         </p>
       </div>
 
-      {/* SLIDER */}
+      {/* 💎 SLIDER */}
       <div
-        className="max-w-7xl mx-auto overflow-hidden"
+        className="max-w-7xl mx-auto overflow-hidden relative z-20"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -109,23 +183,22 @@ export default function Service() {
             >
               <div className="relative rounded-xl overflow-hidden group shadow-lg">
 
-                {/* IMAGE */}
                 <img
                   src={service.image}
                   className="w-full h-[300px] object-cover group-hover:scale-110 transition duration-500"
                 />
 
-                {/* DARK OVERLAY */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition"></div>
 
-                {/* CARD */}
-                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[80%] bg-white rounded-xl p-3 text-center shadow-md group-hover:bg-red-500 transition">
+                <div className="absolute bottom-5 left-1/2 -translate-x-1/2 w-[80%] 
+                bg-white rounded-xl p-3 text-center shadow-md 
+                group-hover:bg-yellow-500 transition">
 
-                  <h3 className="font-semibold text-lg text-black group-hover:text-white">
+                  <h3 className="font-semibold text-lg text-black">
                     {service.title}
                   </h3>
 
-                  <p className="text-sm text-gray-700 mt-1 group-hover:text-white">
+                  <p className="text-sm text-gray-700 mt-1">
                     {service.desc}
                   </p>
 
@@ -137,19 +210,19 @@ export default function Service() {
         </div>
       </div>
 
-      {/* BUTTONS */}
-      <div className="flex justify-center gap-4 mt-8">
+      {/* 💎 BUTTONS */}
+      <div className="flex justify-center gap-4 mt-8 relative z-20">
 
         <button
           onClick={prevSlide}
-          className="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-400 transition active:scale-90"
+          className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition active:scale-90 shadow-lg shadow-yellow-500/30"
         >
           <ArrowLeft size={18} />
         </button>
 
         <button
           onClick={nextSlide}
-          className="bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-400 transition active:scale-90"
+          className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition active:scale-90 shadow-lg shadow-yellow-500/30"
         >
           <ArrowRight size={18} />
         </button>

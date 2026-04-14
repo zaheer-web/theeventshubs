@@ -9,22 +9,22 @@ export default function WorkingAreas() {
   return (
     <section className="bg-[#111] py-24 px-6 text-white relative overflow-hidden">
 
-      {/* 🔴 BACKGROUND GLOW */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/20 via-black to-black" />
+      {/* 💎 GOLD BACKGROUND GLOW */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-black to-black" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
 
-        {/* 🔥 HEADING */}
+        {/* 💎 HEADING */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold">
-            Our <span className="text-red-500">Working Areas</span>
+            Our <span className="text-yellow-400">Working Areas</span>
           </h2>
           <p className="text-gray-400 mt-4">
             We proudly provide our event decoration services across multiple cities.
           </p>
         </div>
 
-        {/* 🔥 CONTENT */}
+        {/* 💎 CONTENT */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
           {/* 🗺️ LEFT IMAGE */}
@@ -36,7 +36,7 @@ export default function WorkingAreas() {
             <img
               src={areaImg}
               alt="areas"
-              className="w-full h-[350px] object-cover rounded-2xl shadow-lg"
+              className="w-full h-[350px] object-cover rounded-2xl shadow-lg border border-yellow-500/20 hover:scale-105 transition duration-500"
             />
           </motion.div>
 
@@ -51,9 +51,9 @@ export default function WorkingAreas() {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.08 }}
-                className="bg-black border border-white/10 hover:border-red-500 p-6 rounded-xl text-center transition shadow-lg"
+                className="bg-black border border-yellow-500/10 hover:border-yellow-500 p-6 rounded-xl text-center transition shadow-lg"
               >
-                <MapPin className="mx-auto text-red-500 mb-2" />
+                <MapPin className="mx-auto text-yellow-400 mb-2" />
                 <h3 className="font-semibold text-lg">{area}</h3>
               </motion.div>
             ))}

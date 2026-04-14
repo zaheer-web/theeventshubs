@@ -13,8 +13,8 @@ export default function CTA() {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      {/* 🔥 DARK + RED OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-red-900/80"></div>
+      {/* 💎 DARK + GOLD OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-yellow-500/30"></div>
 
       {/* 🎈 FLOATING BALLOONS */}
       <div className="absolute inset-0 pointer-events-none z-10">
@@ -36,7 +36,7 @@ export default function CTA() {
       {/* CONTENT */}
       <div className="relative z-20 px-4 max-w-2xl mx-auto">
 
-        <p className="text-red-500 text-sm sm:text-base md:text-lg font-semibold mb-2">
+        <p className="text-yellow-400 text-sm sm:text-base md:text-lg font-semibold mb-2">
           Let’s Celebrate Together 🎉
         </p>
 
@@ -46,8 +46,9 @@ export default function CTA() {
 
         <Link to="/contact">
           <button
-            className="bg-red-500 text-white px-6 sm:px-8 py-3 rounded-full font-semibold 
-            hover:bg-red-400 hover:scale-105 active:scale-95 transition shadow-lg shadow-red-500/40"
+            className="bg-yellow-500 text-black px-6 sm:px-8 py-3 rounded-full font-semibold 
+            hover:bg-yellow-400 hover:scale-105 active:scale-95 transition 
+            shadow-lg shadow-yellow-500/30"
           >
             Book Your Event Now
           </button>

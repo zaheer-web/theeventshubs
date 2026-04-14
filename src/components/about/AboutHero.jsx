@@ -6,7 +6,7 @@ export default function AboutHero() {
   return (
     <div className="relative h-[80vh] sm:h-[90vh] w-full overflow-hidden bg-black">
 
-      {/* 🔥 BACKGROUND IMAGE (CLEAR) */}
+      {/* 💎 BACKGROUND IMAGE */}
       <motion.img
         src={aboutImg}
         alt="about"
@@ -16,11 +16,12 @@ export default function AboutHero() {
         transition={{ duration: 10 }}
       />
 
-      {/* 🔴 LIGHT OVERLAY */}
+      {/* 💎 LIGHT OVERLAY */}
       <div className="absolute inset-0 bg-black/40 z-10" />
 
-      {/* 🔥 LEFT GRADIENT */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
+      {/* 💎 GOLD GRADIENT LEFT */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 via-transparent to-transparent z-10" />
 
       {/* 🎈 BALLOONS */}
       <div className="absolute inset-0 z-30 pointer-events-none">
@@ -40,13 +41,14 @@ export default function AboutHero() {
             className="absolute flex flex-col items-center"
             style={{ left: `${10 + i * 15}%` }}
           >
-            <div className="w-6 h-8 bg-red-500 rounded-full shadow-lg shadow-red-500/40"></div>
+            {/* 💎 GOLD BALLOON */}
+            <div className="w-6 h-8 bg-yellow-500 rounded-full shadow-lg shadow-yellow-500/40"></div>
             <div className="w-[2px] h-10 bg-white/40"></div>
           </motion.div>
         ))}
       </div>
 
-      {/* 🔥 CONTENT (LEFT ALIGN) */}
+      {/* 💎 CONTENT */}
       <div className="relative z-40 flex items-center h-full px-6 sm:px-16">
 
         <motion.div
@@ -56,7 +58,7 @@ export default function AboutHero() {
           className="max-w-2xl text-white text-left"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            About <span className="text-red-500">The Events Hubs</span>
+            About <span className="text-yellow-400">The Events Hubs</span>
           </h1>
 
           <p className="mt-6 text-lg text-gray-200">

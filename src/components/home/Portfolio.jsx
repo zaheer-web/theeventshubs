@@ -43,23 +43,95 @@ export default function Portfolio() {
   };
 
   return (
-    <section className="bg-black py-16 px-4">
+    <section className="relative bg-black py-16 px-4 overflow-hidden">
 
-      {/* 🔥 HEADING */}
-      <div className="text-center mb-12">
+      {/* 🎉 CONFETTI */}
+      {["top-0", "top-1/2 -translate-y-1/2", "bottom-0"].map((pos, idx) => (
+        <React.Fragment key={idx}>
+          <div className={`absolute left-0 ${pos} z-10 pointer-events-none`}>
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  x: idx === 1 ? 200 : Math.random() * 100,
+                  y: idx === 2 ? -200 : 200,
+                  opacity: [1, 0],
+                }}
+                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
+                className={`absolute w-2 h-2 ${
+                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
+                }`}
+              />
+            ))}
+          </div>
+
+          <div className={`absolute right-0 ${pos} z-10 pointer-events-none`}>
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{
+                  x: idx === 1 ? -200 : -Math.random() * 100,
+                  y: idx === 2 ? -200 : 200,
+                  opacity: [1, 0],
+                }}
+                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
+                className={`absolute w-2 h-2 ${
+                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
+                }`}
+              />
+            ))}
+          </div>
+        </React.Fragment>
+      ))}
+
+      {/* 🎈 BALLOONS */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{ y: [-10, -120], opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 6, delay: i * 1, repeat: Infinity }}
+            className="absolute bottom-0 text-3xl"
+            style={{ left: `${25 + i * 25}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 🌸 FLOWERS */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={i}
+            animate={{
+              y: [-20, -200],
+              opacity: [0, 1, 0],
+              x: [0, i % 2 === 0 ? 30 : -30],
+            }}
+            transition={{ duration: 7, delay: i * 0.7, repeat: Infinity }}
+            className="absolute bottom-0 text-2xl"
+            style={{ left: `${15 + i * 20}%` }}
+          >
+            🌸
+          </motion.div>
+        ))}
+      </div>
+
+      {/* 💎 HEADING */}
+      <div className="text-center mb-12 relative z-20">
         <h2 className="text-3xl md:text-5xl font-bold text-white">
           The Events Hubs 🎈
         </h2>
 
-        <p className="text-red-500 mt-3 text-lg">
+        <p className="text-yellow-400 mt-3 text-lg">
           Our Beautiful Decoration Work
         </p>
       </div>
 
-      {/* 🔥 GALLERY */}
-      <div className="max-w-7xl mx-auto space-y-6">
+      {/* 💎 GALLERY */}
+      <div className="max-w-7xl mx-auto space-y-6 relative z-20">
 
-        {/* IMAGES (only if available) */}
         {galleryItems.length > 0 && (
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {galleryItems.map((item, i) => (
@@ -72,14 +144,14 @@ export default function Portfolio() {
           </div>
         )}
 
-        {/* 🔥 ALWAYS SHOW BUTTON */}
+        {/* BUTTON */}
         <div className="flex justify-center mt-10">
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate("/our-gallery")}
-            className="bg-red-500 text-white px-8 py-3 rounded-full font-semibold 
-            shadow-lg shadow-red-500/40 hover:bg-red-400 transition"
+            className="bg-yellow-500 text-black px-8 py-3 rounded-full font-semibold 
+            shadow-lg shadow-yellow-500/30 hover:bg-yellow-400 transition"
           >
             View Projects
           </motion.button>
@@ -87,18 +159,18 @@ export default function Portfolio() {
 
       </div>
 
-      {/* FULL SCREEN PREVIEW */}
+      {/* FULL SCREEN */}
       {currentIndex !== null && galleryItems[currentIndex] && (
-        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">
 
           <button
-            className="absolute top-6 right-6 text-white text-2xl"
+            className="absolute top-6 right-6 text-yellow-400 text-2xl"
             onClick={() => setCurrentIndex(null)}
           >
             ✕
           </button>
 
-          <button className="absolute left-6 text-white" onClick={prevImage}>
+          <button className="absolute left-6 text-yellow-400" onClick={prevImage}>
             <ChevronLeft size={35} />
           </button>
 
@@ -107,16 +179,16 @@ export default function Portfolio() {
               src={galleryItems[currentIndex].file_url}
               controls
               autoPlay
-              className="max-w-[90%] max-h-[80%] rounded-xl"
+              className="max-w-[90%] max-h-[80%] rounded-xl border border-yellow-500/30"
             />
           ) : (
             <img
               src={galleryItems[currentIndex].file_url}
-              className="max-w-[90%] max-h-[80%] rounded-xl"
+              className="max-w-[90%] max-h-[80%] rounded-xl border border-yellow-500/30"
             />
           )}
 
-          <button className="absolute right-6 text-white" onClick={nextImage}>
+          <button className="absolute right-6 text-yellow-400" onClick={nextImage}>
             <ChevronRight size={35} />
           </button>
 
@@ -149,12 +221,8 @@ function Card({ item, onClick }) {
       <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition"></div>
 
       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
-        <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center">
-          {item.type === "video" ? (
-            <Video className="text-black" />
-          ) : (
-            <Image className="text-black" />
-          )}
+        <div className="w-14 h-14 bg-yellow-500 text-black rounded-full flex items-center justify-center shadow-lg shadow-yellow-500/40">
+          {item.type === "video" ? <Video /> : <Image />}
         </div>
       </div>
     </div>

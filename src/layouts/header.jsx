@@ -19,16 +19,16 @@ export default function Header() {
 
   const navLinkClass = ({ isActive }) =>
     isActive
-      ? "text-red-500 border-b-2 border-red-500 pb-1"
-      : "text-gray-200 hover:text-red-400 transition duration-300";
+      ? "text-yellow-400 border-b-2 border-yellow-400 pb-1"
+      : "text-gray-200 hover:text-yellow-400 transition duration-300";
 
   return (
     <nav
       className={`fixed w-full top-0 left-0 z-50 transition-all duration-500
       ${
         scrolled
-          ? "bg-black shadow-lg shadow-black/60"
-          : "bg-gradient-to-r from-black via-black/90 to-black/80 backdrop-blur-xl border-b border-white/10"
+          ? "bg-black shadow-lg shadow-yellow-500/10"
+          : "bg-gradient-to-r from-black via-black/90 to-black/80 backdrop-blur-xl border-b border-yellow-500/10"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-5 md:py-6">
@@ -46,13 +46,13 @@ export default function Header() {
             <span className="text-white text-lg md:text-xl font-extrabold tracking-widest uppercase">
               The Events
             </span>
-            <span className="text-red-500 text-base md:text-lg font-bold tracking-[4px] uppercase">
+            <span className="text-yellow-400 text-base md:text-lg font-bold tracking-[4px] uppercase">
               Hubs
             </span>
           </div>
         </Link>
 
-        {/* Desktop Menu (SAME CONTENT) */}
+        {/* Desktop Menu */}
         <ul className="hidden md:flex gap-12 font-bold items-center text-lg tracking-wide">
           <NavLink to="/" className={navLinkClass}>HOME</NavLink>
           <NavLink to="/services" className={navLinkClass}>SERVICES</NavLink>
@@ -71,8 +71,8 @@ export default function Header() {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
             className="hidden md:flex items-center gap-2 
-            bg-red-500 text-white px-7 py-3 rounded-xl font-bold text-lg
-            hover:bg-red-400 transition shadow-lg shadow-red-500/40"
+            bg-yellow-500 text-black px-7 py-3 rounded-xl font-bold text-lg
+            hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30"
           >
             GET STARTED <Plus size={20} />
           </motion.button>
@@ -93,7 +93,7 @@ export default function Header() {
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-black/95 backdrop-blur-lg border-t border-white/10"
+          className="md:hidden bg-black/95 backdrop-blur-lg border-t border-yellow-500/10"
         >
           <ul className="flex flex-col gap-6 p-6 font-bold text-lg">
             <NavLink to="/" onClick={() => setMenuOpen(false)} className={navLinkClass}>HOME</NavLink>
@@ -110,8 +110,8 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             >
               <button className="mt-4 w-full flex justify-center items-center gap-2 
-              bg-red-500 text-white px-6 py-3 rounded-lg font-bold 
-              hover:bg-red-400 transition shadow-md shadow-red-500/40">
+              bg-yellow-500 text-black px-6 py-3 rounded-lg font-bold 
+              hover:bg-yellow-400 transition shadow-md shadow-yellow-500/30">
                 GET STARTED
               </button>
             </a>

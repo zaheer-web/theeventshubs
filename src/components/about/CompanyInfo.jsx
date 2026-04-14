@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// 🔥 Images
+// Images
 import img1 from "../../assets/wed1.jpeg";
 import img2 from "../../assets/wed2.jpeg";
 import img3 from "../../assets/wed3.jpeg";
@@ -11,15 +11,15 @@ export default function CompanyInfo() {
   return (
     <section className="bg-[#111] text-white py-24 px-6 relative overflow-hidden">
 
-      {/* 🔴 Background Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-red-900/10 via-black to-black" />
+      {/* 💎 GOLD BACKGROUND GLOW */}
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-black to-black" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
 
-        {/* 🔥 TOP SECTION (LEFT TEXT + RIGHT IMAGE) */}
+        {/* 💎 TOP SECTION */}
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
-          {/* 🔥 LEFT CONTENT */}
+          {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -27,7 +27,7 @@ export default function CompanyInfo() {
             className="text-left"
           >
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              About <span className="text-red-500">The Events Hubs</span>
+              About <span className="text-yellow-400">The Events Hubs</span>
             </h2>
 
             <p className="text-gray-400 leading-8 mb-6 text-lg">
@@ -48,25 +48,25 @@ export default function CompanyInfo() {
               we proudly serve Delhi NCR, Noida, Gurugram, and Ghaziabad.
             </p>
 
-            {/* 🔥 STATS */}
+            {/* 💎 STATS */}
             <div className="grid grid-cols-3 gap-4 mt-8">
-              <div className="bg-black p-4 rounded-lg border border-white/10">
-                <h3 className="text-red-500 font-bold text-xl">5+</h3>
+              <div className="bg-black p-4 rounded-lg border border-yellow-500/10">
+                <h3 className="text-yellow-400 font-bold text-xl">5+</h3>
                 <p className="text-gray-400 text-sm">Years</p>
               </div>
-              <div className="bg-black p-4 rounded-lg border border-white/10">
-                <h3 className="text-red-500 font-bold text-xl">50+</h3>
+              <div className="bg-black p-4 rounded-lg border border-yellow-500/10">
+                <h3 className="text-yellow-400 font-bold text-xl">50+</h3>
                 <p className="text-gray-400 text-sm">Workers</p>
               </div>
-              <div className="bg-black p-4 rounded-lg border border-white/10">
-                <h3 className="text-red-500 font-bold text-xl">2000+</h3>
+              <div className="bg-black p-4 rounded-lg border border-yellow-500/10">
+                <h3 className="text-yellow-400 font-bold text-xl">2000+</h3>
                 <p className="text-gray-400 text-sm">Clients</p>
               </div>
             </div>
 
           </motion.div>
 
-          {/* 🔥 RIGHT IMAGE */}
+          {/* RIGHT IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -75,15 +75,15 @@ export default function CompanyInfo() {
             <img
               src={img4}
               alt="event"
-              className="w-full h-[400px] object-cover rounded-2xl shadow-lg hover:scale-105 transition duration-500"
+              className="w-full h-[400px] object-cover rounded-2xl shadow-lg 
+              hover:scale-105 transition duration-500 border border-yellow-500/20"
             />
           </motion.div>
 
         </div>
 
-        {/* 🔥 BOTTOM IMAGE STRIP */}
+        {/* 💎 IMAGE STRIP */}
         <div className="grid md:grid-cols-3 gap-6 mt-16">
-
           {[img1, img2, img3].map((img, i) => (
             <motion.img
               key={i}
@@ -92,27 +92,28 @@ export default function CompanyInfo() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.2 }}
-              className="w-full h-[220px] object-cover rounded-2xl shadow-lg hover:scale-105 transition duration-500"
+              className="w-full h-[220px] object-cover rounded-2xl shadow-lg 
+              hover:scale-105 transition duration-500 border border-yellow-500/20"
             />
           ))}
-
         </div>
 
-        {/* 🔥 CONTACT */}
+        {/* 💎 CONTACT */}
         <div className="mt-16 text-left text-gray-300 space-y-3">
           <p>📍 K-A Block 415, Rahul Vihar 2nd, near Santosh Medical</p>
           <p>📧 Soodmannat902gmail.com</p>
           <p>📞 78887-35541</p>
         </div>
 
-        {/* 🔥 BUTTON */}
+        {/* 💎 BUTTON */}
         <div className="mt-8 text-left">
           <a
             href="https://wa.me/917888735541"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <button className="bg-red-500 px-8 py-3 rounded-xl font-bold text-white hover:bg-red-400 transition shadow-lg shadow-red-500/40">
+            <button className="bg-yellow-500 px-8 py-3 rounded-xl font-bold text-black 
+            hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30">
               Contact Us Now
             </button>
           </a>
