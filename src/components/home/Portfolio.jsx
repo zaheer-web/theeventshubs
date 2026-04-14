@@ -45,77 +45,65 @@ export default function Portfolio() {
   return (
     <section className="relative bg-black py-16 px-4 overflow-hidden">
 
-      {/* 🎉 CONFETTI */}
-      {["top-0", "top-1/2 -translate-y-1/2", "bottom-0"].map((pos, idx) => (
-        <React.Fragment key={idx}>
-          <div className={`absolute left-0 ${pos} z-10 pointer-events-none`}>
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  x: idx === 1 ? 200 : Math.random() * 100,
-                  y: idx === 2 ? -200 : 200,
-                  opacity: [1, 0],
-                }}
-                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
-                className={`absolute w-2 h-2 ${
-                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
-                }`}
-              />
-            ))}
-          </div>
+      {/* 🎈 BALLOONS (4 SIDE) */}
+      <div className="absolute inset-0 pointer-events-none z-10">
 
-          <div className={`absolute right-0 ${pos} z-10 pointer-events-none`}>
-            {[...Array(8)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  x: idx === 1 ? -200 : -Math.random() * 100,
-                  y: idx === 2 ? -200 : 200,
-                  opacity: [1, 0],
-                }}
-                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
-                className={`absolute w-2 h-2 ${
-                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
-                }`}
-              />
-            ))}
-          </div>
-        </React.Fragment>
-      ))}
-
-      {/* 🎈 BALLOONS */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(3)].map((_, i) => (
+        {/* BOTTOM */}
+        {[...Array(4)].map((_, i) => (
           <motion.div
-            key={i}
-            animate={{ y: [-10, -120], opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 6, delay: i * 1, repeat: Infinity }}
+            key={"b" + i}
+            initial={{ y: 120, opacity: 0 }}
+            animate={{ y: [-20, -180], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
             className="absolute bottom-0 text-3xl"
-            style={{ left: `${25 + i * 25}%` }}
+            style={{ left: `${15 + i * 20}%` }}
           >
             🎈
           </motion.div>
         ))}
-      </div>
 
-      {/* 🌸 FLOWERS */}
-      <div className="absolute inset-0 pointer-events-none">
+        {/* TOP */}
         {[...Array(4)].map((_, i) => (
           <motion.div
-            key={i}
-            animate={{
-              y: [-20, -200],
-              opacity: [0, 1, 0],
-              x: [0, i % 2 === 0 ? 30 : -30],
-            }}
-            transition={{ duration: 7, delay: i * 0.7, repeat: Infinity }}
-            className="absolute bottom-0 text-2xl"
-            style={{ left: `${15 + i * 20}%` }}
+            key={"t" + i}
+            initial={{ y: -120, opacity: 0 }}
+            animate={{ y: [20, 180], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
+            className="absolute top-0 text-3xl"
+            style={{ left: `${20 + i * 20}%` }}
           >
-            🌸
+            🎈
           </motion.div>
         ))}
+
+        {/* LEFT */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={"l" + i}
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: [20, 200], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
+            className="absolute left-0 text-3xl"
+            style={{ top: `${30 + i * 20}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
+
+        {/* RIGHT */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={"r" + i}
+            initial={{ x: 120, opacity: 0 }}
+            animate={{ x: [-20, -200], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
+            className="absolute right-0 text-3xl"
+            style={{ top: `${30 + i * 20}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
+
       </div>
 
       {/* 💎 HEADING */}
@@ -159,7 +147,7 @@ export default function Portfolio() {
 
       </div>
 
-      {/* FULL SCREEN */}
+      {/* FULLSCREEN */}
       {currentIndex !== null && galleryItems[currentIndex] && (
         <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50">
 

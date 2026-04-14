@@ -12,36 +12,11 @@ import s5 from "../../assets/s5.jpeg";
 export default function Service() {
 
   const services = [
-    {
-      image: s1,
-      title: "Balloon Decoration",
-      desc: "Creative balloon setups for all types of events and celebrations.",
-      path: "/services",
-    },
-    {
-      image: s2,
-      title: "Birthday Decoration",
-      desc: "Make birthdays special with unique balloon themes & surprises 🎈",
-      path: "/services",
-    },
-    {
-      image: s3,
-      title: "Anniversary Decoration",
-      desc: "Romantic anniversary setups to create unforgettable memories 💛",
-      path: "/services",
-    },
-    {
-      image: s4,
-      title: "Haldi Decoration",
-      desc: "Traditional Haldi decor with modern balloon styling & colors.",
-      path: "/services",
-    },
-    {
-      image: s5,
-      title: "Special Event Setups",
-      desc: "Bridal entry, couple entry, proposal & surprise decorations ✨",
-      path: "/services",
-    },
+    { image: s1, title: "Balloon Decoration", desc: "Creative balloon setups for all events.", path: "/services" },
+    { image: s2, title: "Birthday Decoration", desc: "Unique birthday themes & surprises 🎈", path: "/services" },
+    { image: s3, title: "Anniversary Decoration", desc: "Romantic setups 💛", path: "/services" },
+    { image: s4, title: "Haldi Decoration", desc: "Traditional + modern decor", path: "/services" },
+    { image: s5, title: "Special Event Setups", desc: "Proposal & entry decorations ✨", path: "/services" },
   ];
 
   const loopServices = [...services, ...services];
@@ -51,19 +26,25 @@ export default function Service() {
 
   const visibleCards = 3;
 
+  /* 🔥 ULTRA SMOOTH AUTO SLIDE */
   useEffect(() => {
     if (isHovered) return;
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => prev + 1);
-    }, 3000);
+    }, 2500); // smooth speed
+
     return () => clearInterval(interval);
   }, [isHovered]);
 
+  /* 🔥 NO JUMP RESET */
   useEffect(() => {
     if (currentIndex >= services.length) {
-      setCurrentIndex(0);
+      setTimeout(() => {
+        setCurrentIndex(0);
+      }, 0);
     }
-  }, [currentIndex, services.length]);
+  }, [currentIndex]);
 
   const nextSlide = () => setCurrentIndex((prev) => prev + 1);
   const prevSlide = () =>
@@ -74,81 +55,65 @@ export default function Service() {
   return (
     <section className="relative bg-black py-16 px-4 overflow-hidden">
 
-      {/* 🎉 CONFETTI (TOP + MID + BOTTOM BOTH SIDE) */}
-      {["top-0", "top-1/2 -translate-y-1/2", "bottom-0"].map((pos, idx) => (
-        <React.Fragment key={idx}>
+      {/* 🎈 BALLOONS ALL SIDES */}
+      <div className="absolute inset-0 pointer-events-none z-10">
 
-          {/* LEFT */}
-          <div className={`absolute left-0 ${pos} z-10 pointer-events-none`}>
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  x: idx === 1 ? 200 : Math.random() * 100,
-                  y: idx === 2 ? -200 : 200,
-                  opacity: [1, 0],
-                }}
-                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
-                className={`absolute w-2 h-2 ${
-                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* RIGHT */}
-          <div className={`absolute right-0 ${pos} z-10 pointer-events-none`}>
-            {[...Array(10)].map((_, i) => (
-              <motion.div
-                key={i}
-                animate={{
-                  x: idx === 1 ? -200 : -Math.random() * 100,
-                  y: idx === 2 ? -200 : 200,
-                  opacity: [1, 0],
-                }}
-                transition={{ duration: 2, delay: i * 0.1, repeat: Infinity }}
-                className={`absolute w-2 h-2 ${
-                  i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
-                }`}
-              />
-            ))}
-          </div>
-
-        </React.Fragment>
-      ))}
-
-      {/* 🎈 BALLOONS */}
-      <div className="absolute inset-0 pointer-events-none">
+        {/* BOTTOM */}
         {[...Array(4)].map((_, i) => (
           <motion.div
-            key={i}
-            animate={{ y: [-10, -120], opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 6, delay: i * 1, repeat: Infinity }}
+            key={"b" + i}
+            initial={{ y: 120, opacity: 0 }}
+            animate={{ y: [-20, -180], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
             className="absolute bottom-0 text-3xl"
+            style={{ left: `${15 + i * 20}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
+
+        {/* TOP */}
+        {[...Array(4)].map((_, i) => (
+          <motion.div
+            key={"t" + i}
+            initial={{ y: -120, opacity: 0 }}
+            animate={{ y: [20, 180], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
+            className="absolute top-0 text-3xl"
             style={{ left: `${20 + i * 20}%` }}
           >
             🎈
           </motion.div>
         ))}
-      </div>
 
-      {/* 🌸 FLOWERS */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(5)].map((_, i) => (
+        {/* LEFT */}
+        {[...Array(3)].map((_, i) => (
           <motion.div
-            key={i}
-            animate={{
-              y: [-20, -200],
-              opacity: [0, 1, 0],
-              x: [0, i % 2 === 0 ? 30 : -30],
-            }}
-            transition={{ duration: 7, delay: i * 0.7, repeat: Infinity }}
-            className="absolute bottom-0 text-2xl"
-            style={{ left: `${10 + i * 18}%` }}
+            key={"l" + i}
+            initial={{ x: -120, opacity: 0 }}
+            animate={{ x: [20, 200], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
+            className="absolute left-0 text-3xl"
+            style={{ top: `${30 + i * 20}%` }}
           >
-            🌸
+            🎈
           </motion.div>
         ))}
+
+        {/* RIGHT */}
+        {[...Array(3)].map((_, i) => (
+          <motion.div
+            key={"r" + i}
+            initial={{ x: 120, opacity: 0 }}
+            animate={{ x: [-20, -200], opacity: [0, 1, 0] }}
+            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
+            className="absolute right-0 text-3xl"
+            style={{ top: `${30 + i * 20}%` }}
+          >
+            🎈
+          </motion.div>
+        ))}
+
       </div>
 
       {/* 💎 HEADING */}
@@ -168,7 +133,7 @@ export default function Service() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div
-          className="flex transition-transform duration-500"
+          className="flex transition-transform duration-700 ease-linear"
           style={{
             transform: `translateX(-${
               (currentIndex * 100) / visibleCards
@@ -215,14 +180,14 @@ export default function Service() {
 
         <button
           onClick={prevSlide}
-          className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition active:scale-90 shadow-lg shadow-yellow-500/30"
+          className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition"
         >
           <ArrowLeft size={18} />
         </button>
 
         <button
           onClick={nextSlide}
-          className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition active:scale-90 shadow-lg shadow-yellow-500/30"
+          className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-400 transition"
         >
           <ArrowRight size={18} />
         </button>
