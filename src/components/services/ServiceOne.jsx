@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import img from "../../assets/p-1.jpg";
+import { Link } from "react-router-dom";
 
 function ServiceOne() {
   return (
@@ -124,13 +125,14 @@ function ServiceOne() {
               </button>
             </a>
 
-            <button
-              onClick={() => window.location.href = "/our-gallery"}
-              className="border border-yellow-400 px-8 py-3 rounded-xl text-yellow-400 
-              hover:bg-yellow-400 hover:text-black transition"
-            >
-              View Gallery
-            </button>
+            <Link to="/our-gallery">
+  <button
+    className="border border-yellow-400 px-8 py-3 rounded-xl text-yellow-400 
+    hover:bg-yellow-400 hover:text-black transition"
+  >
+    View Gallery
+  </button>
+</Link>
 
           </div>
 
