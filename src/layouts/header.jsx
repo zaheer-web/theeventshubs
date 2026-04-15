@@ -27,7 +27,7 @@ export default function Header() {
       ${
         scrolled
           ? "bg-black shadow-lg shadow-yellow-500/10"
-          : "bg-gradient-to-r from-black via-black/90 to-black/80 backdrop-blur-xl border-b border-yellow-500/10"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 md:py-5">
