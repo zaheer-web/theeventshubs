@@ -3,11 +3,17 @@ import Divider from "../../components/home/Divider";
 import { motion } from "framer-motion";
 
 // Images
-import img1 from "../../assets/wed1.jpeg";
-import img2 from "../../assets/wed2.jpeg";
-import img3 from "../../assets/wed3.jpeg";
-import img4 from "../../assets/wed4.jpeg";
-import img5 from "../../assets/wed5.jpeg";
+import img1 from "../../assets/ah-2.avif";
+import img2 from "../../assets/b-2.jpg";
+import img3 from "../../assets/ad-1.jpg";
+import img4 from "../../assets/hd-1.webp";
+import img5 from "../../assets/ann-1.webp";
+import img6 from "../../assets/br-1.jpg";
+
+import img8 from "../../assets/ba-2.webp";
+import img9 from "../../assets/p-2.jpg";
+
+
 
 const services = [
   { title: "Balloon Decoration 🎈", img: img1 },
@@ -15,10 +21,10 @@ const services = [
   { title: "Anniversary Decoration 💛", img: img3 },
   { title: "Haldi Decoration 🌼", img: img4 },
   { title: "All Type Decoration ✨", img: img5 },
-  { title: "Bridal Entry 👰", img: img2 },
-  { title: "Couple Entry 💑", img: img3 },
-  { title: "Birthday Surprise 🎁", img: img4 },
-  { title: "Proposal Decoration 💍", img: img1 },
+  
+  { title: "Couple Entry 💑", img: img6 },
+  { title: "Birthday Surprise 🎁", img: img8 },
+  { title: "Proposal Decoration 💍", img: img9 },
 ];
 
 export default function ServicesMain() {

@@ -3,11 +3,11 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import s1 from "../../assets/s1.jpeg";
-import s2 from "../../assets/s2.jpeg";
-import s3 from "../../assets/s3.jpeg";
-import s4 from "../../assets/s4.jpeg";
-import s5 from "../../assets/s5.jpeg";
+import s1 from "../../assets/ba-1.jpg";
+import s2 from "../../assets/b-2.jpg";
+import s3 from "../../assets/ad-1.jpg";
+import s4 from "../../assets/hd-1.webp";
+import s5 from "../../assets/p-2.jpg";
 
 export default function Service() {
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import statsImg from "../../assets/aboutus.jpeg";
+import statsImg from "../../assets/ba-2.webp";
 
 export default function StatsSection() {
   return (

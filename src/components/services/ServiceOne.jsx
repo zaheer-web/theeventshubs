@@ -1,24 +1,47 @@
 import React from "react";
 import { motion } from "framer-motion";
-import img from '../../assets/a1.jpeg';
+import img from "../../assets/p-1.jpg";
 
 function ServiceOne() {
   return (
     <div className="relative h-[90vh] sm:h-screen w-full overflow-hidden bg-black">
 
-      {/* 💎 BACKGROUND IMAGE */}
+      {/* 💎 BACKGROUND IMAGE (FIXED) */}
       <motion.img
         src={img}
-        className="absolute w-full h-full object-cover opacity-50"
+        className="absolute w-full h-full object-cover"
         initial={{ scale: 1 }}
-        animate={{ scale: 1.1 }}
+        animate={{ scale: 1.08 }}
         transition={{ duration: 10 }}
         alt="service"
       />
 
-      {/* 💎 OVERLAY */}
-      <div className="absolute inset-0 bg-black/70 z-10" />
-      <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-black to-black z-10" />
+      {/* 💎 LIGHT OVERLAY (SAME AS HERO) */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-black/40 z-10" />
+
+      {/* 🎉 CONFETTI (ADDED SAME EFFECT) */}
+      <div className="absolute left-0 top-0 z-20 pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ y: 0, x: 0, opacity: 1 }}
+            animate={{
+              y: 200,
+              x: Math.random() * 100,
+              opacity: [1, 0],
+            }}
+            transition={{
+              duration: 2,
+              delay: i * 0.1,
+              repeat: Infinity,
+            }}
+            className={`absolute w-2 h-2 ${
+              i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
+            }`}
+          />
+        ))}
+      </div>
 
       {/* 🎈 BALLOONS */}
       <div className="absolute inset-0 z-20 pointer-events-none">
@@ -44,7 +67,7 @@ function ServiceOne() {
         ))}
       </div>
 
-      {/* 🌸 FLOATING FLOWERS */}
+      {/* 🌸 FLOWERS */}
       <div className="absolute inset-0 z-20 pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <motion.div
@@ -53,7 +76,7 @@ function ServiceOne() {
             animate={{
               y: [-30, -220],
               opacity: [0, 1, 0],
-              x: [0, i % 2 === 0 ? 20 : -20], // thoda side movement
+              x: [0, i % 2 === 0 ? 20 : -20],
             }}
             transition={{
               duration: 7,
@@ -70,7 +93,7 @@ function ServiceOne() {
       </div>
 
       {/* 💎 CONTENT */}
-      <div className="relative z-30 flex items-center justify-center h-full text-center px-6">
+      <div className="absolute inset-0 flex items-center justify-center text-center z-30 px-6">
         <motion.div
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -83,7 +106,7 @@ function ServiceOne() {
             <span className="text-yellow-400">Services 🎈</span>
           </h1>
 
-          <p className="mt-6 text-lg text-gray-300">
+          <p className="mt-6 text-lg text-gray-200">
             Transform your celebrations into unforgettable moments with our
             creative balloon decoration and event styling services.
           </p>

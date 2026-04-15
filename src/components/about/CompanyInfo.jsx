@@ -2,10 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Images
-import img1 from "../../assets/wed1.jpeg";
-import img2 from "../../assets/wed2.jpeg";
-import img3 from "../../assets/wed3.jpeg";
-import img4 from "../../assets/wed4.jpeg";
+import img1 from "../../assets/ah-2.avif";
+import img2 from "../../assets/ah-2.jpg";
+import img3 from "../../assets/ah-3.jpg";
+import img4 from "../../assets/aa-2.webp";
 
 export default function CompanyInfo() {
   return (

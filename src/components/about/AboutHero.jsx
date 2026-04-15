@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutImg from "../../assets/aboutus.jpeg";
+import aboutImg from "../../assets/ah-1.jpg";
 
 export default function AboutHero() {
   return (

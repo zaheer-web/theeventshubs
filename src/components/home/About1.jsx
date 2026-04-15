@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
 
-import img1 from "../../assets/a1.jpeg";
-import img2 from "../../assets/a1.jpeg";
-import img3 from "../../assets/a1.jpeg";
+import img1 from "../../assets/ah-1.jpg";
+import img2 from "../../assets/ah-2.avif";
+import img3 from "../../assets/ah-3.jpg";
 
 /* COUNTER */
 function Counter({ end }) {
@@ -39,94 +39,7 @@ export default function About1() {
       <div className="absolute -top-32 -left-32 w-[400px] h-[400px] bg-yellow-500/20 blur-[160px] rounded-full" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-yellow-400/20 blur-[160px] rounded-full" />
 
-      {/* 🎈 BALLOONS ALL SIDES */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-
-        {/* BOTTOM → TOP */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={"bottom" + i}
-            initial={{ y: 120, opacity: 0 }}
-            animate={{
-              y: [-20, -180],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 6,
-              delay: i * 1,
-              repeat: Infinity,
-            }}
-            className="absolute bottom-0 text-3xl"
-            style={{ left: `${15 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-        {/* TOP → DOWN */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={"top" + i}
-            initial={{ y: -120, opacity: 0 }}
-            animate={{
-              y: [20, 180],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 6,
-              delay: i * 1,
-              repeat: Infinity,
-            }}
-            className="absolute top-0 text-3xl"
-            style={{ left: `${20 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-        {/* LEFT → RIGHT */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={"left" + i}
-            initial={{ x: -120, opacity: 0 }}
-            animate={{
-              x: [20, 200],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 6,
-              delay: i * 1,
-              repeat: Infinity,
-            }}
-            className="absolute left-0 text-3xl"
-            style={{ top: `${30 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-        {/* RIGHT → LEFT */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={"right" + i}
-            initial={{ x: 120, opacity: 0 }}
-            animate={{
-              x: [-20, -200],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 6,
-              delay: i * 1,
-              repeat: Infinity,
-            }}
-            className="absolute right-0 text-3xl"
-            style={{ top: `${30 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-      </div>
+      
 
       {/* 💎 CONTENT */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">

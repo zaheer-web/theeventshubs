@@ -3,26 +3,26 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Image } from "lucide-react";
 
 // Images
-import img1 from "../../assets/a1.jpeg";
-import img2 from "../../assets/a1.jpeg";
-import img3 from "../../assets/a1.jpeg";
-import img4 from "../../assets/a1.jpeg";
-import img5 from "../../assets/a1.jpeg";
-import img6 from "../../assets/a1.jpeg";
-import img7 from "../../assets/a1.jpeg";
-import img8 from "../../assets/a1.jpeg";
-import img9 from "../../assets/a1.jpeg";
-import img10 from "../../assets/a1.jpeg";
-import img11 from "../../assets/a1.jpeg";
-import img12 from "../../assets/a1.jpeg";
-import img13 from "../../assets/a1.jpeg";
-import img14 from "../../assets/a1.jpeg";
-import img15 from "../../assets/a1.jpeg";
-import img16 from "../../assets/a1.jpeg";
-import img17 from "../../assets/a1.jpeg";
-import img18 from "../../assets/a1.jpeg";
-import img19 from "../../assets/a1.jpeg";
-import img20 from "../../assets/a1.jpeg";
+import img1 from "../../assets/aa-1.jpg";
+import img2 from "../../assets/aa-2.webp";
+import img3 from "../../assets/aa-3.webp";
+import img4 from "../../assets/aa-4.webp";
+import img5 from "../../assets/ad-1.jpg";
+import img6 from "../../assets/ah-1.jpg";
+import img7 from "../../assets/ad-2.webp";
+import img8 from "../../assets/ah-2.avif";
+import img9 from "../../assets/ah-2.jpg";
+import img10 from "../../assets/gs-1.webp";
+import img11 from "../../assets/ann-1.webp";
+import img12 from "../../assets/b-1.jpg";
+import img13 from "../../assets/ba-2.webp";
+import img14 from "../../assets/b-2.jpg";
+import img15 from "../../assets/bs-1.webp";
+import img16 from "../../assets/bs-2.jpg";
+import img17 from "../../assets/c-1.jpg";
+import img18 from "../../assets/h-1.jpg";
+import img19 from "../../assets/hd-1.webp";
+import img20 from "../../assets/sh-1.jpg";
 
 export default function AllPhotos() {
   const [currentIndex, setCurrentIndex] = useState(null);

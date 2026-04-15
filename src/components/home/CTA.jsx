@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cta from "../../assets/cta.jpg";
+import cta from "../../assets/ch-1.webp";
 
 export default function CTA() {
   return (
@@ -15,23 +15,6 @@ export default function CTA() {
 
       {/* 💎 DARK + GOLD OVERLAY */}
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-yellow-500/30"></div>
-
-      {/* 🎈 FLOATING BALLOONS */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        {[...Array(4)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-2xl animate-bounce"
-            style={{
-              left: `${20 + i * 20}%`,
-              bottom: `${10 + i * 5}%`,
-              animationDelay: `${i * 0.5}s`
-            }}
-          >
-            🎈
-          </div>
-        ))}
-      </div>
 
       {/* CONTENT */}
       <div className="relative z-20 px-4 max-w-2xl mx-auto">

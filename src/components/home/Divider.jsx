@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Divider() {
   return (
-    <div className="relative flex items-center justify-center py-3 bg-black overflow-hidden">
+    <div className="relative flex items-center justify-center py-0 bg-black overflow-hidden">
 
       {/* 💎 GOLD GLOW LINE */}
       <motion.div

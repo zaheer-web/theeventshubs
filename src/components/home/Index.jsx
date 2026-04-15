@@ -21,7 +21,7 @@ export default function Index() {
       <Highlights />
       <Divider />
       <Portfolio />
-      <Divider />
+      
     </>
   );
 }
