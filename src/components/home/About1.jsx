@@ -64,7 +64,7 @@ export default function About1() {
 
           <p className="mt-6 text-gray-300 text-lg leading-relaxed">
             <span className="text-white font-semibold">
-              The Events Hubs
+              Mannat Luxury Events
             </span>{" "}
             is a trusted and fast-growing event decoration company with{" "}
             <span className="text-yellow-400 font-bold">5+ years</span> of experience.
