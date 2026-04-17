@@ -109,7 +109,7 @@ export default function Portfolio() {
       {/* 💎 HEADING */}
       <div className="text-center mb-12 relative z-20">
         <h2 className="text-3xl md:text-5xl font-bold text-white">
-          The Events Hubs 🎈
+          mannat luxury event 🎈
         </h2>
 
         <p className="text-yellow-400 mt-3 text-lg">

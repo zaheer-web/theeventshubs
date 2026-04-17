@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Divider from "../home/Divider";
 import Swal from "sweetalert2";
-import contactBg from "../../assets/ad-1.jpg";
+// import contactBg from "../../assets/ad-1.jpg";
+import contactBg from "../../assets/za-18.jpeg";
+
 
 export default function ContactUs() {
   const [loading, setLoading] = useState(false);

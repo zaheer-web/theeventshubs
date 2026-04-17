@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import aboutImg from "../../assets/ah-1.jpg";
+// import aboutImg from "../../assets/ah-1.jpg";
+import aboutImg from "../../assets/za-13.jpeg";
+
 
 export default function AboutHero() {
   return (
@@ -58,7 +60,7 @@ export default function AboutHero() {
           className="max-w-2xl text-white text-left"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            About <span className="text-yellow-400">The Events Hubs</span>
+            About <span className="text-yellow-400">Mannat Luxury Events</span>
           </h1>
 
           <p className="mt-6 text-lg text-gray-200">

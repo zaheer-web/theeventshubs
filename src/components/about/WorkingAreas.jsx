@@ -1,7 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
-import areaImg from "../../assets/ba-1.jpg";
+// import areaImg from "../../assets/ba-1.jpg";
+import areaImg from "../../assets/za-14.jpeg";
+
+
 
 export default function WorkingAreas() {
   const areas = ["Delhi NCR", "Noida", "Gurugram", "Ghaziabad"];

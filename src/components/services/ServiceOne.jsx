@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import img from "../../assets/p-1.jpg";
+// import img from "../../assets/p-1.jpg";
+import img from "../../assets/za-10.jpeg";
+
 import { Link } from "react-router-dom";
 
 function ServiceOne() {

@@ -79,10 +79,10 @@ export default function Footer() {
 
               <div>
                 <h2 className="text-xl font-extrabold text-white tracking-wide">
-                  The Events
+                  Mannat Luxury
                 </h2>
                 <span className="text-yellow-400 text-sm font-bold tracking-widest">
-                  HUBS
+                  Event
                 </span>
               </div>
             </div>

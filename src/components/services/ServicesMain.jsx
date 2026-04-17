@@ -4,14 +4,24 @@ import { motion } from "framer-motion";
 
 // Images
 import img1 from "../../assets/ah-2.avif";
-import img2 from "../../assets/b-2.jpg";
+// import img2 from "../../assets/b-2.jpg";
+import img2 from "../../assets/za-10.jpeg";
+
 import img3 from "../../assets/ad-1.jpg";
-import img4 from "../../assets/hd-1.webp";
-import img5 from "../../assets/ann-1.webp";
-import img6 from "../../assets/br-1.jpg";
+// import img4 from "../../assets/hd-1.webp";
+import img4 from "../../assets/za-7.jpeg";
+
+// import img5 from "../../assets/ann-1.webp";
+import img5 from "../../assets/za-12.jpeg";
+
+// import img6 from "../../assets/br-1.jpg";
+import img6 from "../../assets/za-9.jpeg";
+
 
 import img8 from "../../assets/ba-2.webp";
-import img9 from "../../assets/p-2.jpg";
+// import img9 from "../../assets/p-2.jpg";
+import img9 from "../../assets/za-26.jpeg";
+
 
 
 

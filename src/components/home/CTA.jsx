@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cta from "../../assets/ch-1.webp";
+// import cta from "../../assets/ch-1.webp";
+import cta from "../../assets/za-2.jpeg";
+
 
 export default function CTA() {
   return (

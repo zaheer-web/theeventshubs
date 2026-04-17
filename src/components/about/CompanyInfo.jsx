@@ -2,10 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Images
-import img1 from "../../assets/ah-2.avif";
-import img2 from "../../assets/ah-2.jpg";
-import img3 from "../../assets/ah-3.jpg";
-import img4 from "../../assets/aa-2.webp";
+// import img1 from "../../assets/ah-2.avif";
+// import img2 from "../../assets/ah-2.jpg";
+// import img3 from "../../assets/ah-3.jpg";
+// import img4 from "../../assets/aa-2.webp";
+import img1 from "../../assets/za-17.jpeg";
+import img2 from "../../assets/za-8.jpeg";
+import img3 from "../../assets/za-21.jpeg";
+import img4 from "../../assets/za-12.jpeg";
 
 export default function CompanyInfo() {
   return (
@@ -27,11 +31,11 @@ export default function CompanyInfo() {
             className="text-left"
           >
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6">
-              About <span className="text-yellow-400">The Events Hubs</span>
+              About <span className="text-yellow-400">Mannat Luxury events</span>
             </h2>
 
             <p className="text-gray-400 leading-8 mb-6 text-lg">
-              The Events Hubs is a trusted and growing event decoration company with over 
+              Mannat Luxury events is a trusted and growing event decoration company with over 
               <span className="text-white font-semibold"> 5 years of experience</span>. 
               Founded by <span className="text-white font-semibold"> Mannat Sood</span>, 
               we create unforgettable celebrations with creativity and perfection.

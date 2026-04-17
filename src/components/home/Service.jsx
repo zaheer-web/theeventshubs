@@ -6,8 +6,13 @@ import { motion } from "framer-motion";
 import s1 from "../../assets/ba-1.jpg";
 import s2 from "../../assets/b-2.jpg";
 import s3 from "../../assets/ad-1.jpg";
-import s4 from "../../assets/hd-1.webp";
-import s5 from "../../assets/p-2.jpg";
+// import s4 from "../../assets/hd-1.webp";
+// import s5 from "../../assets/p-2.jpg";
+// import s1 from "../../assets/za-10.jpeg";
+// import s2 from "../../assets/za-8.jpeg";
+// import s3 from "../../assets/za-9.jpeg";
+import s4 from "../../assets/za-7.jpeg";
+import s5 from "../../assets/za-11.jpeg";
 
 export default function Service() {
 

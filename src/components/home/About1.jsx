@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
 
-import img1 from "../../assets/ah-1.jpg";
-import img2 from "../../assets/ah-2.avif";
-import img3 from "../../assets/ah-3.jpg";
+// import img1 from "../../assets/ah-1.jpg";
+// import img2 from "../../assets/ah-2.avif";
+// import img3 from "../../assets/ah-3.jpg";
+import img1 from "../../assets/za-4.jpeg";
+import img2 from "../../assets/za-2.jpeg";
+import img3 from "../../assets/za-7.jpeg";
 
 /* COUNTER */
 function Counter({ end }) {
@@ -52,7 +55,7 @@ export default function About1() {
         >
           <h2 className="text-4xl md:text-6xl font-extrabold">
             <span className="text-yellow-400">About </span>
-            The Events Hubs
+            Mannat luxury event
           </h2>
 
           <p className="mt-6 text-lg text-yellow-400 font-semibold">
@@ -112,15 +115,15 @@ export default function About1() {
         {/* RIGHT IMAGES */}
         <div className="grid grid-cols-2 gap-6">
 
-          <div className="col-span-2 rounded-2xl overflow-hidden">
+          <div className="col-span-2 rounded-1xl overflow-hidden">
             <img src={img1} className="w-full h-[300px] object-cover"/>
           </div>
 
-          <div className="rounded-2xl overflow-hidden">
+          <div className="rounded-1xl overflow-hidden">
             <img src={img2} className="w-full h-[220px] object-cover"/>
           </div>
 
-          <div className="rounded-2xl overflow-hidden">
+          <div className="rounded-1xl overflow-hidden">
             <img src={img3} className="w-full h-[220px] object-cover"/>
           </div>
 

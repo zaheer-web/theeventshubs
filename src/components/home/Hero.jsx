@@ -2,7 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
-import heroImg from "../../assets/ah-2.avif";
+// import heroImg from "../../assets/ah-2.avif";
+import heroImg from "../../assets/za-3.jpeg";
+
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -115,7 +117,7 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="mt-6 text-lg text-gray-200">
+          <p className="mt-6 text-lg text-white">
             We design beautiful balloon decorations for birthdays, weddings,
             and special celebrations.
           </p>
