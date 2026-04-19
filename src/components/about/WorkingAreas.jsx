@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 // import areaImg from "../../assets/ba-1.jpg";
-import areaImg from "../../assets/za-14.jpeg";
+import areaImg from "../../assets/fa-4.jpeg";
 
 
 

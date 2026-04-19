@@ -6,6 +6,7 @@ import CTA from "./CTA";
 import Highlights from "./Highlights";
 import Portfolio from "./Portfolio";
 import Divider from "./Divider";
+import ReelsSection from "../gallery/ReelsSection";
 
 export default function Index() {
   return (
@@ -20,6 +21,10 @@ export default function Index() {
       <Divider />
       <Highlights />
       <Divider />
+      <ReelsSection/>
+
+      <Divider />
+
       <Portfolio />
       
     </>

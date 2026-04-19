@@ -3,6 +3,7 @@ import GalleryHero from './GalleryHero'
 import AllPhotos from './AllPhotos'
 import Divider from '../home/Divider'
 import GallerySection from './GallerySection'
+import ReelsSection from './ReelsSection'
 
 
 function Gallery() {
@@ -11,6 +12,9 @@ function Gallery() {
     <GalleryHero/>
     <Divider/>
     <AllPhotos/>
+    <Divider/>
+    <ReelsSection/>
+
     <Divider/>
     <GallerySection/>
 

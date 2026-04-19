@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 // import heroImg from "../../assets/ah-2.avif";
-import heroImg from "../../assets/za-3.jpeg";
+// import heroImg from "../../assets/za-3.jpeg";
+import heroImg from "../../assets/fa-1.jpeg";
+
 
 
 export default function Hero() {

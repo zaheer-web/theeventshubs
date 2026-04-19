@@ -5,14 +5,9 @@ import { motion } from "framer-motion";
 
 import s1 from "../../assets/ba-1.jpg";
 import s2 from "../../assets/b-2.jpg";
-import s3 from "../../assets/ad-1.jpg";
-// import s4 from "../../assets/hd-1.webp";
-// import s5 from "../../assets/p-2.jpg";
-// import s1 from "../../assets/za-10.jpeg";
-// import s2 from "../../assets/za-8.jpeg";
-// import s3 from "../../assets/za-9.jpeg";
+import s3 from "../../assets/fa-20.jpeg";
 import s4 from "../../assets/za-7.jpeg";
-import s5 from "../../assets/za-11.jpeg";
+import s5 from "../../assets/fa-7.jpeg";
 
 export default function Service() {
 
@@ -28,21 +23,38 @@ export default function Service() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [visibleCards, setVisibleCards] = useState(3);
 
-  const visibleCards = 3;
+  /* ✅ RESPONSIVE CARDS */
+  useEffect(() => {
+    const updateCards = () => {
+      if (window.innerWidth < 640) {
+        setVisibleCards(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCards(2);
+      } else {
+        setVisibleCards(3);
+      }
+    };
 
-  /* 🔥 ULTRA SMOOTH AUTO SLIDE */
+    updateCards();
+    window.addEventListener("resize", updateCards);
+
+    return () => window.removeEventListener("resize", updateCards);
+  }, []);
+
+  /* ✅ AUTO SLIDE */
   useEffect(() => {
     if (isHovered) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => prev + 1);
-    }, 2500); // smooth speed
+    }, 3000); // smoother speed
 
     return () => clearInterval(interval);
   }, [isHovered]);
 
-  /* 🔥 NO JUMP RESET */
+  /* ✅ LOOP RESET (NO JUMP) */
   useEffect(() => {
     if (currentIndex >= services.length) {
       setTimeout(() => {
@@ -60,10 +72,9 @@ export default function Service() {
   return (
     <section className="relative bg-black py-16 px-4 overflow-hidden">
 
-      {/* 🎈 BALLOONS ALL SIDES */}
+      {/* 🎈 BALLOONS */}
       <div className="absolute inset-0 pointer-events-none z-10">
 
-        {/* BOTTOM */}
         {[...Array(4)].map((_, i) => (
           <motion.div
             key={"b" + i}
@@ -72,48 +83,6 @@ export default function Service() {
             transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
             className="absolute bottom-0 text-3xl"
             style={{ left: `${15 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-        {/* TOP */}
-        {[...Array(4)].map((_, i) => (
-          <motion.div
-            key={"t" + i}
-            initial={{ y: -120, opacity: 0 }}
-            animate={{ y: [20, 180], opacity: [0, 1, 0] }}
-            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
-            className="absolute top-0 text-3xl"
-            style={{ left: `${20 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-        {/* LEFT */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={"l" + i}
-            initial={{ x: -120, opacity: 0 }}
-            animate={{ x: [20, 200], opacity: [0, 1, 0] }}
-            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
-            className="absolute left-0 text-3xl"
-            style={{ top: `${30 + i * 20}%` }}
-          >
-            🎈
-          </motion.div>
-        ))}
-
-        {/* RIGHT */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={"r" + i}
-            initial={{ x: 120, opacity: 0 }}
-            animate={{ x: [-20, -200], opacity: [0, 1, 0] }}
-            transition={{ duration: 6, delay: i * 0.8, repeat: Infinity }}
-            className="absolute right-0 text-3xl"
-            style={{ top: `${30 + i * 20}%` }}
           >
             🎈
           </motion.div>
@@ -138,11 +107,11 @@ export default function Service() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div
-          className="flex transition-transform duration-700 ease-linear"
+          className="flex transition-transform duration-700 ease-out will-change-transform"
           style={{
-            transform: `translateX(-${
+            transform: `translate3d(-${
               (currentIndex * 100) / visibleCards
-            }%)`,
+            }%, 0, 0)`,
           }}
         >
           {loopServices.map((service, i) => (
@@ -156,6 +125,7 @@ export default function Service() {
                 <img
                   src={service.image}
                   className="w-full h-[300px] object-cover group-hover:scale-110 transition duration-500"
+                  alt={service.title}
                 />
 
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition"></div>

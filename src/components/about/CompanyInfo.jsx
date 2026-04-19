@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 // import img2 from "../../assets/ah-2.jpg";
 // import img3 from "../../assets/ah-3.jpg";
 // import img4 from "../../assets/aa-2.webp";
-import img1 from "../../assets/za-17.jpeg";
-import img2 from "../../assets/za-8.jpeg";
+import img1 from "../../assets/fa-3.jpeg";
+import img2 from "../../assets/fa-4.jpeg";
 import img3 from "../../assets/za-21.jpeg";
-import img4 from "../../assets/za-12.jpeg";
+import img4 from "../../assets/fa-14.jpeg";
 
 export default function CompanyInfo() {
   return (

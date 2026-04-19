@@ -3,26 +3,6 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Image } from "lucide-react";
 
 // Images
-// import img1 from "../../assets/aa-1.jpg";
-// import img2 from "../../assets/aa-2.webp";
-// import img3 from "../../assets/aa-3.webp";
-// import img4 from "../../assets/aa-4.webp";
-// import img5 from "../../assets/ad-1.jpg";
-// import img6 from "../../assets/ah-1.jpg";
-// import img7 from "../../assets/ad-2.webp";
-// import img8 from "../../assets/ah-2.avif";
-// import img9 from "../../assets/ah-2.jpg";
-// import img10 from "../../assets/gs-1.webp";
-// import img11 from "../../assets/ann-1.webp";
-// import img12 from "../../assets/b-1.jpg";
-// import img13 from "../../assets/ba-2.webp";
-// import img14 from "../../assets/b-2.jpg";
-// import img15 from "../../assets/bs-1.webp";
-// import img16 from "../../assets/bs-2.jpg";
-// import img17 from "../../assets/c-1.jpg";
-// import img18 from "../../assets/h-1.jpg";
-// import img19 from "../../assets/hd-1.webp";
-// import img20 from "../../assets/sh-1.jpg";
 import img1 from "../../assets/za-1.jpeg";
 import img2 from "../../assets/za-2.jpeg";
 import img3 from "../../assets/za-3.jpeg";
@@ -35,14 +15,14 @@ import img9 from "../../assets/za-10.jpeg";
 import img10 from "../../assets/za-11.jpeg";
 import img11 from "../../assets/za-12.jpeg";
 import img12 from "../../assets/za-13.jpeg";
-import img13 from "../../assets/za-14.jpeg";
-import img14 from "../../assets/za-15.jpeg";
-import img15 from "../../assets/za-16.jpeg";
-import img16 from "../../assets/za-17.jpeg";
-import img17 from "../../assets/za-18.jpeg";
-import img18 from "../../assets/za-19.jpeg";
-import img19 from "../../assets/za-20.jpeg";
-import img20 from "../../assets/za-21.jpeg";
+import img13 from "../../assets/fa-14.jpeg";
+import img14 from "../../assets/fa-15.jpeg";
+import img15 from "../../assets/fa-16.jpeg";
+import img16 from "../../assets/fa-17.jpeg";
+import img17 from "../../assets/fa-18.jpeg";
+import img18 from "../../assets/fa-19.jpeg";
+import img19 from "../../assets/fa-20.jpeg";
+import img20 from "../../assets/fa-21.jpeg";
 
 export default function AllPhotos() {
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -55,10 +35,10 @@ export default function AllPhotos() {
     img16, img17, img18, img19, img20,
   ];
 
-  const visibleItems =
-    window.innerWidth < 640 && !showAll
-      ? galleryItems.slice(0, 6)
-      : galleryItems;
+  // ✅ Only 8 images initially
+  const visibleItems = showAll
+    ? galleryItems
+    : galleryItems.slice(0, 8);
 
   const nextItem = () => {
     setCurrentIndex((prev) =>
@@ -110,19 +90,32 @@ export default function AllPhotos() {
         ))}
       </div>
 
-      {/* 💎 VIEW MORE */}
+      {/* ✅ VIEW ALL BUTTON */}
       {!showAll && (
-        <div className="text-center mt-10 sm:hidden">
+        <div className="text-center mt-10">
           <button
             onClick={() => setShowAll(true)}
-            className="bg-yellow-500 px-6 py-2 rounded-lg text-black font-semibold hover:bg-yellow-400 transition shadow-md shadow-yellow-500/30"
+            className="bg-yellow-500 px-8 py-3 rounded-xl text-black font-bold 
+            hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30"
           >
-            View More
+            View All
           </button>
         </div>
       )}
 
-      {/* 💎 FULLSCREEN */}
+      {/* ✅ SHOW LESS BUTTON */}
+      {showAll && (
+        <div className="text-center mt-6">
+          <button
+            onClick={() => setShowAll(false)}
+            className="text-yellow-400 underline"
+          >
+            Show Less
+          </button>
+        </div>
+      )}
+
+      {/* 💎 FULLSCREEN VIEW */}
       {currentIndex !== null && (
         <div className="fixed inset-0 bg-black/95 flex items-center justify-center z-50 px-4">
 

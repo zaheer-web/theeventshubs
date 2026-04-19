@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 // import statsImg from "../../assets/ba-2.webp";
-import statsImg from "../../assets/za-5.jpeg";
+import statsImg from "../../assets/fa-15.jpeg";
 
 
 export default function StatsSection() {
