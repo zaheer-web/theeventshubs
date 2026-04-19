@@ -14,7 +14,7 @@ function Service3() {
           Creating <span className="text-yellow-400">Unforgettable Moments</span>
         </h2>
         <p className="text-gray-400 mt-6 text-lg">
-          At <span className="text-white font-semibold">The Events Hubs</span>, 
+          At <span className="text-white font-semibold">Mannat luxury Events</span>, 
           we don’t just decorate events — we create memories that last forever. 
           Your trust is our biggest achievement, and every celebration is handled 
           with passion, creativity, and perfection.
