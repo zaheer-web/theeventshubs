@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 // import heroImg from "../../assets/ah-2.avif";
 // import heroImg from "../../assets/za-3.jpeg";
-import heroImg from "../../assets/fa-1.jpeg";
+import heroImg from "../../assets/sasa-2.jpeg";
 
 
 

@@ -7,7 +7,7 @@ import s1 from "../../assets/ba-1.jpg";
 import s2 from "../../assets/b-2.jpg";
 import s3 from "../../assets/fa-20.jpeg";
 import s4 from "../../assets/za-7.jpeg";
-import s5 from "../../assets/fa-7.jpeg";
+import s5 from "../../assets/fa-16.jpeg";
 
 export default function Service() {
 
