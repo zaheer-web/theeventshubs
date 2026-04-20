@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Phone } from "lucide-react";
 
 // import img1 from "../../assets/za-4.jpeg";
-import img1 from "../../assets/fa-3.jpeg";
+import img1 from "../../assets/sasa-3.jpeg";
 
 
 /* COUNTER */
