@@ -93,7 +93,6 @@ export default function Footer() {
             {/* SOCIAL */}
             <div className="flex justify-center md:justify-start gap-4 mt-6">
 
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/mannatluxuryevents?igsh=cGkxNXpmYXN5ZzJt"
                 target="_blank"
@@ -103,7 +102,6 @@ export default function Footer() {
                 <Instagram size={18}/>
               </a>
 
-              {/* Facebook */}
               <a
                 href="https://www.facebook.com/profile.php?id=61580287569524"
                 target="_blank"
@@ -139,19 +137,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* CONTACT */}
+          {/* 🔥 CONTACT (FIXED CENTER MOBILE) */}
           <div>
             <h3 className="text-white font-bold mb-4">Contact</h3>
 
-            <a href="tel:7888735541" className="flex gap-2">
+            <a
+              href="tel:7888735541"
+              className="flex items-center justify-center md:justify-start gap-2"
+            >
               <Phone size={16}/> 78887-35541
             </a>
 
-            <a href="mailto:Soodmannat902@gmail.com" className="flex gap-2 mt-2">
+            <a
+              href="mailto:Soodmannat902@gmail.com"
+              className="flex items-center justify-center md:justify-start gap-2 mt-2"
+            >
               <Mail size={16}/> Email
             </a>
 
-            <div className="flex gap-2 mt-2">
+            <div className="flex items-center justify-center md:justify-start gap-2 mt-2">
               <MapPin size={16}/> India
             </div>
           </div>
