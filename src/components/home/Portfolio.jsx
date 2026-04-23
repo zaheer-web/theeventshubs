@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Image, Video, ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import api from "../../api/axios";
 
 export default function Portfolio() {
   const navigate = useNavigate();

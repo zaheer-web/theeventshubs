@@ -17,6 +17,7 @@ import ContactUs from "./components/contact/ContactUs";
 import Service1 from "./components/services/Service1";
 import AboutMain from "./components/about/AboutMain";
 import Gallery from "./components/gallery/Gallery";
+import Deshboard from "./adminDeshboard/Dashboard";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/about" element={<AboutMain/>} />
         <Route path="/services" element={<Service1/>} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/admin" element={<Deshboard />} />
 
        
 

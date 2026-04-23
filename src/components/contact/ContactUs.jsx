@@ -2,31 +2,84 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Divider from "../home/Divider";
-import Swal from "sweetalert2";
-// import contactBg from "../../assets/ad-1.jpg";
 import contactBg from "../../assets/za-18.jpeg";
+import { createContact } from "../../api/apiRoute";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactUs() {
+
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // ✅ VALIDATION
+  if (!formData.fullName || !formData.email || !formData.phone || !formData.message) {
+    toast.error("All fields are required");
+    return;
+  }
+
+  if (!/^[a-zA-Z\s]+$/.test(formData.fullName)) {
+    toast.error("Name should contain only letters");
+    return;
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+    toast.error("Invalid email address");
+    return;
+  }
+
+  if (!/^[0-9]{10}$/.test(formData.phone)) {
+    toast.error("Phone must be 10 digits");
+    return;
+  }
+
+  try {
+
     setLoading(true);
 
-    setTimeout(() => {
-      Swal.fire({
-        icon: "success",
-        title: "Message Sent 🎉",
-        text: "We will contact you soon!",
-        confirmButtonColor: "#D4AF37",
-      });
-      setLoading(false);
-    }, 1500);
-  };
+    await createContact(formData);
+
+    toast.success("Message Sent 🎉");
+
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      message: ""
+    });
+
+  } catch (error) {
+
+    toast.error("Something went wrong ❌");
+
+  } finally {
+
+    setLoading(false);
+
+  }
+};
 
   return (
     <>
+      <ToastContainer position="top-right" autoClose={3000} />
+
       {/* 💎 PREMIUM HERO */}
       <section className="relative h-[90vh] sm:h-screen w-full overflow-hidden bg-black">
 
@@ -187,28 +240,44 @@ export default function ContactUs() {
             </h2>
 
             <input
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
               placeholder="Your Name"
               className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
             <input
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Email"
               className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
             <input
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Phone"
               className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Message"
               className="bg-black border border-yellow-500/10 rounded-lg p-3 w-full text-white mb-4 focus:border-yellow-400 outline-none"
             />
 
-            <button className="w-full bg-yellow-500 py-3 rounded-lg font-bold text-black hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30">
+            <button
+              disabled={loading}
+              className="w-full bg-yellow-500 py-3 rounded-lg font-bold text-black hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30"
+            >
               {loading ? "Sending..." : "Send Message"}
             </button>
+
           </motion.form>
 
         </div>
@@ -227,7 +296,6 @@ export default function ContactUs() {
         </div>
       </section>
 
-      
     </>
   );
 }
